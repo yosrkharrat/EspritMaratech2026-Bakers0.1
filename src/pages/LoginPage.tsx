@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { Eye, EyeOff, Users, Shield, Dumbbell, UserCheck } from 'lucide-react';
+import { Eye, EyeOff, Users, Shield, Dumbbell, UserCheck, Loader2 } from 'lucide-react';
 
 const roleInfo = [
   { role: 'Admin', icon: Shield, desc: 'Gestion complète', color: 'text-red-500' },
@@ -11,33 +11,37 @@ const roleInfo = [
 ];
 
 const demoAccounts = [
-  { name: 'Yosri Kharrat', cin: '123', role: 'Admin' },
-  { name: 'Ahmed Ben Ali', cin: '456', role: 'Coach' },
-  { name: 'Salma Gharbi', cin: '789', role: 'Admin Groupe' },
-  { name: 'Youssef Trabelsi', cin: '321', role: 'Membre' },
+  { email: 'admin@rct.tn', password: 'password123', role: 'Admin' },
+  { email: 'coach@rct.tn', password: 'password123', role: 'Coach' },
+  { email: 'mohamed@rct.tn', password: 'password123', role: 'Membre' },
 ];
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const { login, loginAsVisitor } = useAuth();
-  const [name, setName] = useState('');
-  const [cin, setCin] = useState('');
-  const [showCin, setShowCin] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [showDemo, setShowDemo] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    if (!name.trim()) { setError('Entrez votre nom'); return; }
-    if (!cin || cin.length !== 3) { setError('Code CIN: 3 chiffres'); return; }
-    const result = login(name, cin);
+    if (!email.trim()) { setError('Entrez votre email'); return; }
+    if (!password) { setError('Entrez votre mot de passe'); return; }
+    setIsSubmitting(true);
+    const result = await login(email, password);
+    setIsSubmitting(false);
     if (result.success) { navigate('/'); return; }
     setError(result.error || 'Erreur');
   };
 
-  const handleDemoLogin = (n: string, c: string) => {
-    const result = login(n, c);
+  const handleDemoLogin = async (demoEmail: string, demoPassword: string) => {
+    setIsSubmitting(true);
+    const result = await login(demoEmail, demoPassword);
+    setIsSubmitting(false);
     if (result.success) navigate('/');
   };
 
@@ -61,37 +65,38 @@ const LoginPage = () => {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Nom complet</label>
+              <label className="text-sm font-medium mb-1.5 block">Email</label>
               <input
-                type="text"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                placeholder="Votre nom et prénom"
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="votre@email.com"
                 className="w-full h-12 px-4 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                disabled={isSubmitting}
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Code CIN (3 chiffres)</label>
+              <label className="text-sm font-medium mb-1.5 block">Mot de passe</label>
               <div className="relative">
                 <input
-                  type={showCin ? 'text' : 'password'}
-                  value={cin}
-                  onChange={e => { if (/^\d{0,3}$/.test(e.target.value)) setCin(e.target.value); }}
-                  placeholder="•••"
-                  maxLength={3}
-                  className="w-full h-12 px-4 pr-12 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary tracking-widest"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full h-12 px-4 pr-12 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  disabled={isSubmitting}
                 />
-                <button type="button" onClick={() => setShowCin(!showCin)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-                  {showCin ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
             </div>
 
             {error && <p className="text-destructive text-sm font-medium">{error}</p>}
 
-            <button type="submit" className="w-full h-12 rct-gradient-hero text-white font-display font-bold rounded-xl rct-glow-blue transition-transform active:scale-[0.98]">
-              Se connecter
+            <button type="submit" disabled={isSubmitting} className="w-full h-12 rct-gradient-hero text-white font-display font-bold rounded-xl rct-glow-blue transition-transform active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2">
+              {isSubmitting ? <><Loader2 className="w-5 h-5 animate-spin" /> Connexion...</> : 'Se connecter'}
             </button>
           </form>
 
@@ -129,11 +134,11 @@ const LoginPage = () => {
         {showDemo && (
           <div className="space-y-2 mb-6 animate-slide-up">
             {demoAccounts.map(d => (
-              <button key={d.cin} onClick={() => handleDemoLogin(d.name, d.cin)}
-                className="w-full bg-card rounded-xl p-3 rct-shadow-card flex items-center justify-between text-left">
+              <button key={d.email} onClick={() => handleDemoLogin(d.email, d.password)} disabled={isSubmitting}
+                className="w-full bg-card rounded-xl p-3 rct-shadow-card flex items-center justify-between text-left disabled:opacity-70">
                 <div>
-                  <p className="text-sm font-semibold">{d.name}</p>
-                  <p className="text-xs text-muted-foreground">{d.role} · CIN: {d.cin}</p>
+                  <p className="text-sm font-semibold">{d.email}</p>
+                  <p className="text-xs text-muted-foreground">{d.role}</p>
                 </div>
                 <span className="text-xs text-primary font-semibold">Essayer →</span>
               </button>

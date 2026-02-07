@@ -1,12 +1,14 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User, UserRole } from '@/types';
-import { authenticate, getUser, initStore } from '@/lib/store';
+import { initStore } from '@/lib/store';
+import { authApi, setAuthToken, getAuthToken } from '@/lib/api';
 
 interface AuthContextType {
   user: User | null;
   isLoggedIn: boolean;
   isVisitor: boolean;
-  login: (name: string, cin: string) => { success: boolean; error?: string };
+  isLoading: boolean;
+  login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   loginAsVisitor: () => void;
   logout: () => void;
   hasRole: (...roles: UserRole[]) => boolean;
@@ -22,29 +24,41 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isVisitor, setIsVisitor] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     initStore();
-    const savedUserId = localStorage.getItem('rct_currentUser');
+    const token = getAuthToken();
     const savedVisitor = localStorage.getItem('rct_visitor');
-    if (savedUserId) {
-      const u = getUser(savedUserId);
-      if (u) setUser(u);
+    
+    if (token) {
+      // Verify token and get user data
+      authApi.me().then(response => {
+        if (response.success && response.data?.user) {
+          setUser(response.data.user as User);
+        } else {
+          setAuthToken(null);
+        }
+        setIsLoading(false);
+      });
     } else if (savedVisitor) {
       setIsVisitor(true);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
-  const login = (name: string, cin: string) => {
-    const u = authenticate(name, cin);
-    if (u) {
-      setUser(u);
+  const login = async (email: string, password: string) => {
+    const response = await authApi.login(email, password);
+    if (response.success && response.data) {
+      setAuthToken(response.data.token);
+      setUser(response.data.user as User);
       setIsVisitor(false);
-      localStorage.setItem('rct_currentUser', u.id);
       localStorage.removeItem('rct_visitor');
       return { success: true };
     }
-    return { success: false, error: 'Nom ou code CIN invalide' };
+    return { success: false, error: response.error || 'Email ou mot de passe invalide' };
   };
 
   const loginAsVisitor = () => {
@@ -55,9 +69,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = () => {
+    setAuthToken(null);
     setUser(null);
     setIsVisitor(false);
-    localStorage.removeItem('rct_currentUser');
     localStorage.removeItem('rct_visitor');
   };
 
@@ -77,6 +91,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user,
       isLoggedIn: !!user,
       isVisitor,
+      isLoading,
       login,
       loginAsVisitor,
       logout,
