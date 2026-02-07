@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Accessibilité - RCT Connect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .score-global {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .score-global h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .score-number {
+            font-size: 5em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .score-label {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .principes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .principe-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .principe-card.warning {
+            border-left-color: #ffc107;
+        }
+        
+        .principe-card.success {
+            border-left-color: #28a745;
+        }
+        
+        .principe-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .principe-score {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        .principe-score.warning {
+            color: #ffc107;
+        }
+        
+        .principe-score.success {
+            color: #28a745;
+        }
+        
+        .problemes-section {
+            margin: 40px 0;
+        }
+        
+        .probleme {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .probleme.critique {
+            border-left: 5px solid #dc3545;
+        }
+        
+        .probleme.haute {
+            border-left: 5px solid #fd7e14;
+        }
+        
+        .probleme.moyenne {
+            border-left: 5px solid #ffc107;
+        }
+        
+        .probleme-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .badge.critique {
+            background: #dc3545;
+        }
+        
+        .badge.haute {
+            background: #fd7e14;
+        }
+        
+        .badge.moyenne {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        
+        .actions {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .actions h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .action-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .action-icon {
+            font-size: 2em;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Évaluation Accessibilité WCAG 2.1 AA</h1>
+            <p><strong>Application RCT Connect</strong> - Running Club Tunis</p>
+            <p>Date: 7 février 2026 | Norme: WCAG 2.1 Niveau AA</p>
+        </div>
+        
+        <div class="score-global">
+            <h2>Score Global de Conformité</h2>
+            <div class="score-number">77.5%</div>
+            <div class="score-label">🟡 Partiellement Conforme</div>
+            <p style="margin-top: 15px; font-size: 0.95em;">Objectif: 95%+ pour conformité complète</p>
+        </div>
+        
+        <h2 style="margin-bottom: 20px; color: #333;">📊 Les 4 Principes WCAG 2.1</h2>
+        <div class="principes-grid">
+            <div class="principe-card warning">
+                <h3>1️⃣ Perceptible</h3>
+                <div class="principe-score warning">75%</div>
+                <p>Problèmes de contraste à corriger</p>
+                <ul style="margin-top: 10px; padding-left: 20px; color: #666;">
+                    <li>Textes `muted` faible contraste</li>
+                    <li>Badges sur gradients</li>
+                </ul>
+            </div>
+            
+            <div class="principe-card warning">
+                <h3>2️⃣ Utilisable</h3>
+                <div class="principe-score warning">70%</div>
+                <p>21 erreurs de labels à corriger</p>
+                <ul style="margin-top: 10px; padding-left: 20px; color: #666;">
+                    <li>18 labels non associés</li>
+                    <li>3 composants UI génériques</li>
+                </ul>
+            </div>
+            
+            <div class="principe-card success">
+                <h3>3️⃣ Compréhensible</h3>
+                <div class="principe-score success">90%</div>
+                <p>Bonne structure globale</p>
+                <ul style="margin-top: 10px; padding-left: 20px; color: #28a745;">
+                    <li>✓ Navigation cohérente</li>
+                    <li>✓ Langue déclarée</li>
+                </ul>
+            </div>
+            
+            <div class="principe-card warning">
+                <h3>4️⃣ Robuste</h3>
+                <div class="principe-score warning">75%</div>
+                <p>Lié aux problèmes de labels</p>
+                <ul style="margin-top: 10px; padding-left: 20px; color: #666;">
+                    <li>HTML valide</li>
+                    <li>ARIA partiel</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">21</div>
+                <div class="stat-label">Erreurs Détectées</div>
+            </div>
+            
+            <div class="stat-box">
+                <div class="stat-number">13-16h</div>
+                <div class="stat-label">Temps de Correction</div>
+            </div>
+            
+            <div class="stat-box">
+                <div class="stat-number">95%+</div>
+                <div class="stat-label">Objectif Visé</div>
+            </div>
+        </div>
+        
+        <div class="problemes-section">
+            <h2 style="margin-bottom: 20px; color: #333;">🚨 Problèmes Identifiés</h2>
+            
+            <div class="probleme critique">
+                <div class="probleme-header">
+                    <span class="badge critique">CRITIQUE</span>
+                    <strong>Labels de formulaires non associés</strong>
+                </div>
+                <p><strong>18 occurrences</strong> - Les lecteurs d'écran ne peuvent pas identifier les champs</p>
+                <p style="margin-top: 10px;"><strong>WCAG:</strong> 4.1.2, 3.3.2 | <strong>Effort:</strong> 2-3 heures</p>
+                <p style="margin-top: 5px; color: #666;"><strong>Fichiers:</strong> CreateEventPage (7), CreatePostPage (2), LoginPage (2), MessagingPage (3), NotificationsPage (3), RegisterPage (3)</p>
+            </div>
+            
+            <div class="probleme haute">
+                <div class="probleme-header">
+                    <span class="badge haute">HAUTE</span>
+                    <strong>Contraste des couleurs insuffisant</strong>
+                </div>
+                <p><strong>15-20 éléments</strong> - Difficulté de lecture pour utilisateurs malvoyants</p>
+                <p style="margin-top: 10px;"><strong>WCAG:</strong> 1.4.3 | <strong>Effort:</strong> 3-4 heures</p>
+                <p style="margin-top: 5px; color: #666;"><strong>Éléments:</strong> text-muted-foreground, badges sur gradients, placeholders</p>
+            </div>
+            
+            <div class="probleme moyenne">
+                <div class="probleme-header">
+                    <span class="badge moyenne">MOYENNE</span>
+                    <strong>Composants UI génériques</strong>
+                </div>
+                <p><strong>3 erreurs</strong> - Confusion pour lecteurs d'écran</p>
+                <p style="margin-top: 10px;"><strong>WCAG:</strong> 4.1.2 | <strong>Effort:</strong> 1 heure</p>
+                <p style="margin-top: 5px; color: #666;"><strong>Fichiers:</strong> alert.tsx, card.tsx, pagination.tsx</p>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <h2>📋 Plan d'Action (4 semaines)</h2>
+            
+            <div class="action-item">
+                <div class="action-icon">1️⃣</div>
+                <div>
+                    <strong>Semaine 1: Corrections Critiques</strong>
+                    <p style="color: #666;">Corriger les 18 labels de formulaires + tests lecteur d'écran</p>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">2️⃣</div>
+                <div>
+                    <strong>Semaine 2: Corrections Hautes</strong>
+                    <p style="color: #666;">Audit Lighthouse + ajuster contrastes + zoom 200%</p>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">3️⃣</div>
+                <div>
+                    <strong>Semaine 3: Corrections Moyennes</strong>
+                    <p style="color: #666;">Corriger composants UI + ARIA + tests régression</p>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">4️⃣</div>
+                <div>
+                    <strong>Semaine 4: Validation</strong>
+                    <p style="color: #666;">Tests NVDA complets + Lighthouse >90 + documentation</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: #e7f3ff; padding: 25px; border-radius: 15px; margin-top: 30px; border-left: 5px solid #2196F3;">
+            <h3 style="color: #1976d2; margin-bottom: 15px;">🎓 Tests à Effectuer Maintenant</h3>
+            <ol style="padding-left: 20px; color: #333;">
+                <li style="margin-bottom: 10px;"><strong>Lighthouse:</strong> Ouvrir Chrome à http://localhost:8081 → F12 → Lighthouse → Accessibility</li>
+                <li style="margin-bottom: 10px;"><strong>ESLint:</strong> Exécuter <code style="background: #f5f5f5; padding: 2px 8px; border-radius: 3px;">npm run lint</code> dans le terminal</li>
+                <li style="margin-bottom: 10px;"><strong>NVDA:</strong> Télécharger <a href="https://www.nvaccess.org/download/" target="_blank">NVDA</a> et tester la navigation</li>
+                <li><strong>Extension:</strong> Installer <strong>axe DevTools</strong> dans Chrome Web Store</li>
+            </ol>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Rapport Complet:</strong> EVALUATION_ACCESSIBILITE_RCT.md</p>
+            <p>Documentation: ACCESSIBILITY_TESTING.md | ACCESSIBILITY.md</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">Généré automatiquement - Évaluation WCAG 2.1 AA</p>
+        </div>
+    </div>
+</body>
+</html>

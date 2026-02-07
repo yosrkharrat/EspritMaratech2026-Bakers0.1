@@ -98,13 +98,13 @@ const CreatePostPage = () => {
         {/* Run stats */}
         <div className="grid grid-cols-2 gap-3 mb-4">
           <div>
-            <label className="text-xs text-muted-foreground mb-1 flex items-center gap-1"><MapPin className="w-3 h-3" />Distance</label>
-            <input value={distance} onChange={e => setDistance(e.target.value)} placeholder="ex: 10 km"
+            <label htmlFor="post-distance" className="text-xs text-muted-foreground mb-1 flex items-center gap-1"><MapPin className="w-3 h-3" />Distance</label>
+            <input id="post-distance" value={distance} onChange={e => setDistance(e.target.value)} placeholder="ex: 10 km"
               className="w-full h-10 px-3 rounded-lg bg-muted border border-border text-sm" />
           </div>
           <div>
-            <label className="text-xs text-muted-foreground mb-1 flex items-center gap-1"><Timer className="w-3 h-3" />Allure</label>
-            <input value={pace} onChange={e => setPace(e.target.value)} placeholder="ex: 5:30/km"
+            <label htmlFor="post-pace" className="text-xs text-muted-foreground mb-1 flex items-center gap-1"><Timer className="w-3 h-3" />Allure</label>
+            <input id="post-pace" value={pace} onChange={e => setPace(e.target.value)} placeholder="ex: 5:30/km"
               className="w-full h-10 px-3 rounded-lg bg-muted border border-border text-sm" />
           </div>
         </div>

@@ -69,8 +69,9 @@ const RegisterPage = () => {
 
           <form onSubmit={handleRegister} className="space-y-4">
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Nom complet *</label>
+              <label htmlFor="register-name" className="text-sm font-medium mb-1.5 block">Nom complet *</label>
               <input
+                id="register-name"
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
@@ -81,9 +82,10 @@ const RegisterPage = () => {
             </div>
 
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Code CIN (3 derniers chiffres) *</label>
+              <label htmlFor="register-cin" className="text-sm font-medium mb-1.5 block">Code CIN (3 derniers chiffres) *</label>
               <div className="relative">
                 <input
+                  id="register-cin"
                   type={showCin ? 'text' : 'password'}
                   value={cin}
                   onChange={e => {
@@ -106,8 +108,9 @@ const RegisterPage = () => {
             </div>
 
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Groupe (optionnel)</label>
+              <label htmlFor="register-group" className="text-sm font-medium mb-1.5 block">Groupe (optionnel)</label>
               <select
+                id="register-group"
                 value={group}
                 onChange={e => setGroup(e.target.value)}
                 className="w-full h-12 px-4 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary"

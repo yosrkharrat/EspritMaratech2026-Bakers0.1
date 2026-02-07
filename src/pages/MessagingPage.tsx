@@ -206,6 +206,8 @@ const MessagingPage = () => {
           <div className="px-4 py-3 bg-card border-t border-border safe-bottom">
             <div className="flex gap-2">
               <input
+                id="message-input"
+                aria-label="Écrire un message"
                 value={newMsg}
                 onChange={e => setNewMsg(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleSend()}
@@ -308,16 +310,18 @@ const MessagingPage = () => {
           </DialogHeader>
           <div className="space-y-4 mt-4">
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Nom du groupe</label>
+              <label htmlFor="group-name" className="text-sm font-medium mb-1.5 block">Nom du groupe</label>
               <Input
+                id="group-name"
                 value={newGroupName}
                 onChange={e => setNewGroupName(e.target.value)}
                 placeholder="Ex: Groupe A - Entraînements"
               />
             </div>
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Description (optionnel)</label>
+              <label htmlFor="group-description" className="text-sm font-medium mb-1.5 block">Description (optionnel)</label>
               <Input
+                id="group-description"
                 value={newGroupDesc}
                 onChange={e => setNewGroupDesc(e.target.value)}
                 placeholder="Description du groupe..."

@@ -61,33 +61,33 @@ const CreateEventPage = () => {
 
       <form onSubmit={handleSubmit} className="px-4 space-y-4">
         <div>
-          <label className="text-sm font-medium mb-1.5 block">Titre</label>
-          <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Nom de l'événement"
+          <label htmlFor="event-title" className="text-sm font-medium mb-1.5 block">Titre</label>
+          <input id="event-title" value={title} onChange={e => setTitle(e.target.value)} placeholder="Nom de l'événement"
             className="w-full h-12 px-4 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="text-sm font-medium mb-1.5 block flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />Date</label>
-            <input type="date" value={date} onChange={e => setDate(e.target.value)}
+            <label htmlFor="event-date" className="text-sm font-medium mb-1.5 block flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />Date</label>
+            <input id="event-date" type="date" value={date} onChange={e => setDate(e.target.value)}
               className="w-full h-12 px-4 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
           <div>
-            <label className="text-sm font-medium mb-1.5 block flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />Heure</label>
-            <input type="time" value={time} onChange={e => setTime(e.target.value)}
+            <label htmlFor="event-time" className="text-sm font-medium mb-1.5 block flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />Heure</label>
+            <input id="event-time" type="time" value={time} onChange={e => setTime(e.target.value)}
               className="w-full h-12 px-4 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
         </div>
 
         <div>
-          <label className="text-sm font-medium mb-1.5 block flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />Lieu</label>
-          <input value={location} onChange={e => setLocation(e.target.value)} placeholder="Lieu de rendez-vous"
+          <label htmlFor="event-location" className="text-sm font-medium mb-1.5 block flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />Lieu</label>
+          <input id="event-location" value={location} onChange={e => setLocation(e.target.value)} placeholder="Lieu de rendez-vous"
             className="w-full h-12 px-4 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
         </div>
 
         <div>
-          <label className="text-sm font-medium mb-1.5 block flex items-center gap-1.5"><Users className="w-3.5 h-3.5" />Groupe</label>
-          <select value={group} onChange={e => setGroup(e.target.value)}
+          <label htmlFor="event-group" className="text-sm font-medium mb-1.5 block flex items-center gap-1.5"><Users className="w-3.5 h-3.5" />Groupe</label>
+          <select id="event-group" value={group} onChange={e => setGroup(e.target.value)}
             className="w-full h-12 px-4 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary">
             <option>Tous</option>
             <option>Groupe A</option>
@@ -109,8 +109,8 @@ const CreateEventPage = () => {
         </div>
 
         <div>
-          <label className="text-sm font-medium mb-1.5 block">Description</label>
-          <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Détails de l'événement..."
+          <label htmlFor="event-description" className="text-sm font-medium mb-1.5 block">Description</label>
+          <textarea id="event-description" value={description} onChange={e => setDescription(e.target.value)} placeholder="Détails de l'événement..."
             rows={3} className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
         </div>
 

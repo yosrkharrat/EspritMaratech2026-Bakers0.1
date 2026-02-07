@@ -47,8 +47,9 @@ const LoginPage = () => {
 
           <form onSubmit={handleLogin} className="space-y-3">
             <div>
-              <label className="text-xs font-medium mb-1 block">Email</label>
+              <label htmlFor="login-email" className="text-xs font-medium mb-1 block">Email</label>
               <input
+                id="login-email"
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
@@ -59,9 +60,10 @@ const LoginPage = () => {
             </div>
 
             <div>
-              <label className="text-xs font-medium mb-1 block">Mot de passe</label>
+              <label htmlFor="login-password" className="text-xs font-medium mb-1 block">Mot de passe</label>
               <div className="relative">
                 <input
+                  id="login-password"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
