@@ -12,6 +12,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   loginAsVisitor: () => void;
   logout: () => void;
+  updateUser: (updates: Partial<User & { bio?: string }>) => void;
   hasRole: (...roles: UserRole[]) => boolean;
   isAdmin: boolean;
   isCoach: boolean;
@@ -31,6 +32,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     initStore();
     const token = getAuthToken();
     const savedVisitor = localStorage.getItem('rct_visitor');
+    const savedProfile = localStorage.getItem('rct_user_profile');
     
     if (token) {
       // Verify token and get user data
@@ -39,12 +41,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (response.success && response.data?.user) {
             const userData = response.data.user;
             // If user already has frontend shape (offline fallback), use directly
+            let resolvedUser: User;
             if (userData.stats && userData.joinDate) {
-              setUser(userData as User);
+              resolvedUser = userData as User;
             } else {
-              const mappedUser = mapApiUser(userData);
-              setUser(mappedUser);
+              resolvedUser = mapApiUser(userData);
             }
+            // Merge with saved profile data (name, bio, etc.)
+            if (savedProfile) {
+              try {
+                const profileData = JSON.parse(savedProfile);
+                if (profileData.id === resolvedUser.id) {
+                  resolvedUser = { ...resolvedUser, ...profileData };
+                }
+              } catch (e) {}
+            }
+            setUser(resolvedUser);
           } else {
             // Invalid token, clear it
             setAuthToken(null);
@@ -98,6 +110,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem('rct_visitor');
   };
 
+  const updateUser = (updates: Partial<User & { bio?: string }>) => {
+    if (user) {
+      const updatedUser = { ...user, ...updates };
+      setUser(updatedUser as User);
+      // Save to localStorage for persistence
+      localStorage.setItem('rct_user_profile', JSON.stringify(updatedUser));
+    }
+  };
+
   const hasRole = (...roles: UserRole[]) => {
     if (!user) return false;
     return roles.includes(user.role);
@@ -118,6 +139,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       login,
       loginAsVisitor,
       logout,
+      updateUser,
       hasRole,
       isAdmin,
       isCoach,

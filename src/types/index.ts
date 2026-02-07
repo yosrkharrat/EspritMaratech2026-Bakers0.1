@@ -80,6 +80,7 @@ export interface Message {
   senderId: string;
   receiverId: string;
   content: string;
+  image?: string;
   createdAt: string;
   read: boolean;
 }
@@ -92,6 +93,28 @@ export interface Conversation {
   lastMessage: string;
   lastMessageTime: string;
   unreadCount: number;
+}
+
+export interface ChatGroup {
+  id: string;
+  name: string;
+  description?: string;
+  memberIds: string[];
+  createdBy: string;
+  createdAt: string;
+  lastMessage?: string;
+  lastMessageTime?: string;
+  lastMessageSender?: string;
+}
+
+export interface ChatMessage {
+  id: string;
+  groupId: string;
+  senderId: string;
+  senderName: string;
+  senderRole: UserRole;
+  content: string;
+  createdAt: string;
 }
 
 export interface Rating {

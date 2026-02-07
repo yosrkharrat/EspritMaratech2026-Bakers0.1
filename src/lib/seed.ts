@@ -1,4 +1,4 @@
-import { User, RCTEvent, Post, Story, Course, AppNotification, Conversation, Message } from '@/types';
+import { User, RCTEvent, Post, Story, Course, AppNotification, Conversation, Message, ChatGroup, ChatMessage } from '@/types';
 
 // ---- Seed Users ----
 export const seedUsers: User[] = [
@@ -194,4 +194,54 @@ export const seedMessages: Message[] = [
   { id: 'm5', senderId: 'u4', receiverId: 'u3', content: 'On se retrouve au stade?', createdAt: new Date(Date.now() - 7200000).toISOString(), read: true },
   { id: 'm6', senderId: 'u1', receiverId: 'u4', content: 'N\'oublie pas l\'inscription pour le semi!', createdAt: new Date(Date.now() - 172800000).toISOString(), read: true },
   { id: 'm7', senderId: 'u4', receiverId: 'u1', content: 'Merci pour l\'info!', createdAt: new Date(Date.now() - 86400000).toISOString(), read: true },
+];
+
+// ---- Seed Chat Groups ----
+export const seedChatGroups: ChatGroup[] = [
+  {
+    id: 'cg1',
+    name: 'Groupe A - Entraînements',
+    description: 'Informations et annonces pour le Groupe A',
+    memberIds: ['u1', 'u2', 'u4', 'u6', 'u8'],
+    createdBy: 'u1',
+    createdAt: new Date(Date.now() - 604800000).toISOString(),
+    lastMessage: 'Rappel: sortie demain à 6h30 au Lac!',
+    lastMessageTime: new Date(Date.now() - 3600000).toISOString(),
+    lastMessageSender: 'Ahmed Ben Ali',
+  },
+  {
+    id: 'cg2',
+    name: 'Groupe B - Entraînements',
+    description: 'Informations et annonces pour le Groupe B',
+    memberIds: ['u1', 'u3', 'u5', 'u7'],
+    createdBy: 'u1',
+    createdAt: new Date(Date.now() - 604800000).toISOString(),
+    lastMessage: 'Séance fractionné confirmée pour demain 18h',
+    lastMessageTime: new Date(Date.now() - 7200000).toISOString(),
+    lastMessageSender: 'Salma Gharbi',
+  },
+  {
+    id: 'cg3',
+    name: 'Semi-Marathon Carthage',
+    description: 'Groupe pour les participants au semi-marathon',
+    memberIds: ['u1', 'u2', 'u4'],
+    createdBy: 'u1',
+    createdAt: new Date(Date.now() - 259200000).toISOString(),
+    lastMessage: 'Dossards à retirer samedi matin!',
+    lastMessageTime: new Date(Date.now() - 86400000).toISOString(),
+    lastMessageSender: 'Yosri Kharrat',
+  },
+];
+
+// ---- Seed Chat Messages ----
+export const seedChatMessages: ChatMessage[] = [
+  { id: 'cm1', groupId: 'cg1', senderId: 'u1', senderName: 'Yosri Kharrat', senderRole: 'admin', content: 'Bienvenue dans le groupe A! Ici vous recevrez toutes les infos sur les entraînements.', createdAt: new Date(Date.now() - 604800000).toISOString() },
+  { id: 'cm2', groupId: 'cg1', senderId: 'u2', senderName: 'Ahmed Ben Ali', senderRole: 'coach', content: 'N\'hésitez pas à me contacter pour vos questions techniques!', createdAt: new Date(Date.now() - 518400000).toISOString() },
+  { id: 'cm3', groupId: 'cg1', senderId: 'u2', senderName: 'Ahmed Ben Ali', senderRole: 'coach', content: 'Rappel: sortie demain à 6h30 au Lac!', createdAt: new Date(Date.now() - 3600000).toISOString() },
+  { id: 'cm4', groupId: 'cg2', senderId: 'u1', senderName: 'Yosri Kharrat', senderRole: 'admin', content: 'Groupe B, bienvenue! Salma est votre responsable de groupe.', createdAt: new Date(Date.now() - 604800000).toISOString() },
+  { id: 'cm5', groupId: 'cg2', senderId: 'u3', senderName: 'Salma Gharbi', senderRole: 'group_admin', content: 'Programme de la semaine disponible!', createdAt: new Date(Date.now() - 172800000).toISOString() },
+  { id: 'cm6', groupId: 'cg2', senderId: 'u3', senderName: 'Salma Gharbi', senderRole: 'group_admin', content: 'Séance fractionné confirmée pour demain 18h', createdAt: new Date(Date.now() - 7200000).toISOString() },
+  { id: 'cm7', groupId: 'cg3', senderId: 'u1', senderName: 'Yosri Kharrat', senderRole: 'admin', content: 'Groupe créé pour coordonner notre participation au semi-marathon!', createdAt: new Date(Date.now() - 259200000).toISOString() },
+  { id: 'cm8', groupId: 'cg3', senderId: 'u2', senderName: 'Ahmed Ben Ali', senderRole: 'coach', content: 'Je vous prépare un plan de préparation spécifique.', createdAt: new Date(Date.now() - 172800000).toISOString() },
+  { id: 'cm9', groupId: 'cg3', senderId: 'u1', senderName: 'Yosri Kharrat', senderRole: 'admin', content: 'Dossards à retirer samedi matin!', createdAt: new Date(Date.now() - 86400000).toISOString() },
 ];

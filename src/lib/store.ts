@@ -1,5 +1,5 @@
-import { User, RCTEvent, Post, Story, Course, AppNotification, Conversation, Message, Comment, Rating } from '@/types';
-import { seedUsers, seedEvents, seedPosts, seedStories, seedCourses, seedNotifications, seedConversations, seedMessages } from './seed';
+import { User, RCTEvent, Post, Story, Course, AppNotification, Conversation, Message, Comment, Rating, ChatGroup, ChatMessage } from '@/types';
+import { seedUsers, seedEvents, seedPosts, seedStories, seedCourses, seedNotifications, seedConversations, seedMessages, seedChatGroups, seedChatMessages } from './seed';
 
 const STORAGE_PREFIX = 'rct_';
 
@@ -25,6 +25,8 @@ export function initStore() {
     setItem('notifications', seedNotifications);
     setItem('conversations', seedConversations);
     setItem('messages', seedMessages);
+    setItem('chatGroups', seedChatGroups);
+    setItem('chatMessages', seedChatMessages);
     setItem('initialized', true);
   }
 }
@@ -197,6 +199,49 @@ export function sendMessage(message: Message) {
     });
   }
   setItem('conversations', convs);
+}
+
+// ============ CHAT GROUPS ============
+export function getChatGroups(userId: string): ChatGroup[] {
+  return getItem<ChatGroup[]>('chatGroups', seedChatGroups).filter(g => g.memberIds.includes(userId));
+}
+export function getChatGroup(id: string): ChatGroup | undefined {
+  return getItem<ChatGroup[]>('chatGroups', seedChatGroups).find(g => g.id === id);
+}
+export function createChatGroup(group: ChatGroup) {
+  const groups = getItem<ChatGroup[]>('chatGroups', seedChatGroups);
+  groups.unshift(group);
+  setItem('chatGroups', groups);
+}
+export function updateChatGroup(group: ChatGroup) {
+  const groups = getItem<ChatGroup[]>('chatGroups', seedChatGroups);
+  const idx = groups.findIndex(g => g.id === group.id);
+  if (idx >= 0) groups[idx] = group;
+  setItem('chatGroups', groups);
+}
+export function deleteChatGroup(id: string) {
+  setItem('chatGroups', getItem<ChatGroup[]>('chatGroups', seedChatGroups).filter(g => g.id !== id));
+  // Also delete all messages in the group
+  setItem('chatMessages', getItem<ChatMessage[]>('chatMessages', seedChatMessages).filter(m => m.groupId !== id));
+}
+export function getChatMessages(groupId: string): ChatMessage[] {
+  return getItem<ChatMessage[]>('chatMessages', seedChatMessages)
+    .filter(m => m.groupId === groupId)
+    .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+}
+export function sendChatMessage(message: ChatMessage) {
+  const messages = getItem<ChatMessage[]>('chatMessages', seedChatMessages);
+  messages.push(message);
+  setItem('chatMessages', messages);
+  // Update group's last message
+  const groups = getItem<ChatGroup[]>('chatGroups', seedChatGroups);
+  const group = groups.find(g => g.id === message.groupId);
+  if (group) {
+    group.lastMessage = message.content;
+    group.lastMessageTime = message.createdAt;
+    group.lastMessageSender = message.senderName;
+    setItem('chatGroups', groups);
+  }
 }
 
 // ============ THEME ============

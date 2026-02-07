@@ -42,7 +42,7 @@
       "group_name": "Intermédiaire",
       "distance": 456,
       "runs": 67,
-      "joined_events": 34,
+      "joined_events": 33,
       "strava_connected": true,
       "strava_id": "strava_mohamed",
       "created_at": "2026-02-07T10:30:19.758Z",
@@ -188,11 +188,6 @@
     {
       "event_id": "0d44055f-6575-411f-93f3-1b9ce0c8bcab",
       "user_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
-      "joined_at": "2026-02-07T10:30:19.758Z"
-    },
-    {
-      "event_id": "0d44055f-6575-411f-93f3-1b9ce0c8bcab",
-      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {

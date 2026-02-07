@@ -2,11 +2,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HashRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { Capacitor } from "@capacitor/core";
 import { App as CapApp } from "@capacitor/app";
 import { useEffect } from "react";
-import { AuthProvider } from "@/contexts/AuthContext";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import SkipLink from "@/components/SkipLink";
 import BottomNav from "@/components/BottomNav";
@@ -29,10 +29,23 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 // Pages where bottom nav should be hidden
-const hideNavPages = ['/login', '/create-event', '/create-post', '/messaging', '/settings', '/strava', '/history', '/notifications'];
+const hideNavPages = ['/login', '/create-event', '/create-post', '/settings', '/strava', '/history', '/notifications'];
+
+// Protected route component - redirects visitors to login
+const RequireAuth = ({ children }: { children: React.ReactNode }) => {
+  const { isLoggedIn, isVisitor } = useAuth();
+  if (!isLoggedIn && !isVisitor) {
+    return <Navigate to="/login" replace />;
+  }
+  if (isVisitor && !isLoggedIn) {
+    return <Navigate to="/calendar" replace />;
+  }
+  return <>{children}</>;
+};
 
 const AppContent = () => {
   const location = useLocation();
+  const { isVisitor, isLoggedIn } = useAuth();
   const showNav = !hideNavPages.some(p => location.pathname.startsWith(p))
     && !location.pathname.startsWith('/event/');
 
@@ -48,26 +61,35 @@ const AppContent = () => {
     }
   }, []);
 
+  // Redirect visitors from non-allowed pages
+  const isAllowedForVisitor = ['/calendar', '/login', '/event/'].some(
+    path => location.pathname === path || location.pathname.startsWith('/event/')
+  ) || location.pathname === '/calendar';
+  
+  if (isVisitor && !isLoggedIn && !isAllowedForVisitor) {
+    return <Navigate to="/calendar" replace />;
+  }
+
   return (
     <>
       <SkipLink />
       <div className="w-full min-h-screen bg-background relative safe-top">
         <main id="main-content" tabIndex={-1}>
           <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={isVisitor && !isLoggedIn ? <Navigate to="/calendar" replace /> : <HomePage />} />
         <Route path="/calendar" element={<CalendarPage />} />
-        <Route path="/map" element={<MapPage />} />
-        <Route path="/community" element={<CommunityPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/map" element={<RequireAuth><MapPage /></RequireAuth>} />
+        <Route path="/community" element={<RequireAuth><CommunityPage /></RequireAuth>} />
+        <Route path="/profile" element={<RequireAuth><ProfilePage /></RequireAuth>} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/history" element={<HistoryPage />} />
-        <Route path="/create-event" element={<CreateEventPage />} />
+        <Route path="/history" element={<RequireAuth><HistoryPage /></RequireAuth>} />
+        <Route path="/create-event" element={<RequireAuth><CreateEventPage /></RequireAuth>} />
         <Route path="/event/:id" element={<EventDetailPage />} />
-        <Route path="/create-post" element={<CreatePostPage />} />
-        <Route path="/notifications" element={<NotificationsPage />} />
-        <Route path="/messaging" element={<MessagingPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/strava" element={<StravaPage />} />
+        <Route path="/create-post" element={<RequireAuth><CreatePostPage /></RequireAuth>} />
+        <Route path="/notifications" element={<RequireAuth><NotificationsPage /></RequireAuth>} />
+        <Route path="/messaging" element={<RequireAuth><MessagingPage /></RequireAuth>} />
+        <Route path="/settings" element={<RequireAuth><SettingsPage /></RequireAuth>} />
+        <Route path="/strava" element={<RequireAuth><StravaPage /></RequireAuth>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </main>
