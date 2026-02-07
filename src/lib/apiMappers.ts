@@ -7,6 +7,9 @@ import { RCTEvent, Post, Comment, User } from '@/types';
 
 // Map API user to User
 export function mapApiUser(apiUser: any): User {
+  // If already in frontend shape, return as-is
+  if (apiUser.stats && apiUser.joinDate) return apiUser as User;
+
   return {
     id: apiUser.id,
     name: apiUser.name,
@@ -43,6 +46,9 @@ function mapUserRole(apiRole: string): 'admin' | 'coach' | 'group_admin' | 'memb
 
 // Map API event to RCTEvent
 export function mapApiEvent(apiEvent: any): RCTEvent {
+  // If already in frontend shape (has 'group' not 'group_name'), return as-is
+  if (apiEvent.group && apiEvent.participants && Array.isArray(apiEvent.participants)) return apiEvent as RCTEvent;
+
   return {
     id: apiEvent.id,
     title: apiEvent.title,
@@ -77,6 +83,9 @@ function mapEventType(apiType: string): 'daily' | 'weekly' | 'race' {
 
 // Map API post to Post
 export function mapApiPost(apiPost: any): Post {
+  // If already in frontend shape (has 'authorName'), return as-is
+  if (apiPost.authorName && apiPost.likes && Array.isArray(apiPost.likes)) return apiPost as Post;
+
   return {
     id: apiPost.id,
     authorId: apiPost.author_id,
