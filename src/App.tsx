@@ -13,7 +13,7 @@ import BottomNav from "@/components/BottomNav";
 import HomePage from "@/pages/HomePage";
 import CalendarPage from "@/pages/CalendarPage";
 import MapPage from "@/pages/MapPage";
-import CommunityPage from "@/pages/CommunityPage";
+// CommunityPage removed - merged into HomePage
 import ProfilePage from "@/pages/ProfilePage";
 import LoginPage from "@/pages/LoginPage";
 import HistoryPage from "@/pages/HistoryPage";
@@ -79,7 +79,7 @@ const AppContent = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/map" element={<RequireAuth><MapPage /></RequireAuth>} />
-        <Route path="/community" element={<RequireAuth><CommunityPage /></RequireAuth>} />
+
         <Route path="/profile" element={<RequireAuth><ProfilePage /></RequireAuth>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/history" element={<RequireAuth><HistoryPage /></RequireAuth>} />

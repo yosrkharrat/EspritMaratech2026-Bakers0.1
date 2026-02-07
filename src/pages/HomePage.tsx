@@ -8,6 +8,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { postsApi, notificationsApi } from '@/lib/api';
 import { mapApiPost } from '@/lib/apiMappers';
 import { Post } from '@/types';
+import { rctPosts } from '@/lib/rctPosts';
 
 const HomePage = () => {
   const { user, isLoggedIn } = useAuth();
@@ -20,12 +21,18 @@ const HomePage = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        // Fetch posts
+        // Fetch posts from API
+        let apiPosts: Post[] = [];
         const postsResponse = await postsApi.getAll({ limit: 5 });
         if (postsResponse.success && postsResponse.data) {
-          const mappedPosts = (postsResponse.data as any[]).map(mapApiPost);
-          setPosts(mappedPosts);
+          apiPosts = (postsResponse.data as any[]).map(mapApiPost);
         }
+
+        // Merge with RCT static posts and sort by date (newest first)
+        const allPosts = [...apiPosts, ...rctPosts].sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        setPosts(allPosts);
 
         // Fetch unread notifications count
         if (user) {

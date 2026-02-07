@@ -7,6 +7,7 @@ import { postsApi } from '@/lib/api';
 import { mapApiPost } from '@/lib/apiMappers';
 import { useAuth } from '@/contexts/AuthContext';
 import { Post } from '@/types';
+import { rctPosts } from '@/lib/rctPosts';
 
 const CommunityPage = () => {
   const navigate = useNavigate();
@@ -19,13 +20,20 @@ const CommunityPage = () => {
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
+        let apiPosts: Post[] = [];
         const response = await postsApi.getAll();
         if (response.success && response.data) {
-          const mappedPosts = (response.data as any[]).map(mapApiPost);
-          setAllPosts(mappedPosts);
+          apiPosts = (response.data as any[]).map(mapApiPost);
         }
+        // Merge with RCT static posts, sorted newest first
+        const merged = [...apiPosts, ...rctPosts].sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        setAllPosts(merged);
       } catch (error) {
         console.error('Error fetching posts:', error);
+        // Fall back to RCT posts if API fails
+        setAllPosts([...rctPosts]);
       } finally {
         setIsLoading(false);
       }

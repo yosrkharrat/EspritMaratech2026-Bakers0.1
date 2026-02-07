@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Heart, MessageCircle, Share2, Send } from 'lucide-react';
 import { toggleLike, addComment, getUsers } from '@/lib/store';
 import { useAuth } from '@/contexts/AuthContext';
+import ImageCarousel from '@/components/ImageCarousel';
 import type { Post, Comment } from '@/types';
 
 interface PostCardProps {
@@ -52,16 +53,25 @@ const PostCard = ({ post }: PostCardProps) => {
     return `${Math.floor(hrs / 24)}j`;
   };
 
+  const isRctPost = post.authorId === 'rct';
+
+  const formatDate = (dateStr: string) => {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
+
   return (
     <div className="overflow-hidden border-b border-border pb-4">
       {/* Author header */}
       <div className="flex items-center gap-3 p-4 pb-2">
-        <div className="w-9 h-9 rounded-full rct-gradient-hero flex items-center justify-center text-white text-sm font-bold">
-          {author?.name.split(' ').map(n => n[0]).join('') || '?'}
+        <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold ${isRctPost ? 'bg-[#1a6dd4]' : 'rct-gradient-hero'}`}>
+          {isRctPost ? 'RCT' : (author?.name.split(' ').map(n => n[0]).join('') || '?')}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="font-bold text-sm truncate">{author?.name || 'Inconnu'}</p>
-          <p className="text-[11px] text-muted-foreground">{timeAgo(post.createdAt)}</p>
+          <p className="font-bold text-sm truncate">{author?.name || post.authorName || 'Inconnu'}</p>
+          <p className="text-[11px] text-muted-foreground">
+            {isRctPost ? formatDate(post.createdAt) : timeAgo(post.createdAt)}
+          </p>
         </div>
         {post.distance && (
           <div className="flex items-center gap-2">
@@ -79,13 +89,31 @@ const PostCard = ({ post }: PostCardProps) => {
 
       {/* Content */}
       {post.content && (
-        <p className="px-4 pb-2 text-sm">{post.content}</p>
+        <p className="px-4 pb-2 text-sm whitespace-pre-line">{post.content}</p>
       )}
 
-      {/* Image */}
-      {post.image && (
+      {/* Multi-image carousel */}
+      {post.images && post.images.length > 0 && (
+        <ImageCarousel images={post.images} />
+      )}
+
+      {/* Single image */}
+      {!post.images?.length && post.image && (
         <div className="w-full aspect-[4/3] bg-muted overflow-hidden">
-          <img src={post.image} alt="" className="w-full h-full object-cover" />
+          <img src={post.image} alt="" className="w-full h-full object-cover" loading="lazy" />
+        </div>
+      )}
+
+      {/* Video */}
+      {post.video && (
+        <div className="w-full bg-black">
+          <video
+            src={post.video}
+            controls
+            playsInline
+            preload="metadata"
+            className="w-full max-h-[500px] object-contain"
+          />
         </div>
       )}
 

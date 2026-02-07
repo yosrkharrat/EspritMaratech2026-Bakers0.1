@@ -55,6 +55,7 @@ export interface Post {
   authorAvatar: string;
   content: string;
   image?: string;
+  images?: string[];
   video?: string;
   likes: string[];
   comments: Comment[];
