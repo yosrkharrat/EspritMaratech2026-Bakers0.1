@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Eye, EyeOff, Users, Shield, Dumbbell, UserCheck, Loader2 } from 'lucide-react';
+import rctLogo from '@/assets/rct-logo.svg';
 
 const roleInfo = [
   { role: 'Admin', icon: Shield, desc: 'Gestion complète', color: 'text-red-500' },
@@ -39,10 +40,15 @@ const LoginPage = () => {
   };
 
   const handleDemoLogin = async (demoEmail: string, demoPassword: string) => {
+    setError('');
     setIsSubmitting(true);
     const result = await login(demoEmail, demoPassword);
     setIsSubmitting(false);
-    if (result.success) navigate('/');
+    if (result.success) {
+      navigate('/');
+    } else {
+      setError(result.error || 'Erreur de connexion au compte démo');
+    }
   };
 
   return (
@@ -50,10 +56,13 @@ const LoginPage = () => {
       {/* Hero */}
       <div className="relative h-72 rct-gradient-hero flex items-end">
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-        <div className="relative p-6 pb-10 w-full">
-          <h1 className="font-display font-extrabold text-4xl text-white drop-shadow-lg">RCT</h1>
-          <p className="text-white/80 font-body text-sm mt-1">Running Club Tunis</p>
-          <p className="text-white/60 text-xs mt-1">Depuis 2016 · 125 coureurs · 🇹🇳</p>
+        <div className="relative p-6 pb-10 w-full flex items-end gap-4">
+          <img src={rctLogo} alt="RCT Logo" className="h-20 w-20 drop-shadow-2xl" />
+          <div>
+            <h1 className="font-display font-extrabold text-4xl text-white drop-shadow-lg">RCT</h1>
+            <p className="text-white/80 font-body text-sm mt-1">Running Club Tunis</p>
+            <p className="text-white/60 text-xs mt-1">Depuis 2016 · 125 coureurs · 🇹🇳</p>
+          </div>
         </div>
       </div>
 

@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
+      "id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
       "email": "admin@rct.tn",
-      "password": "$2a$10$3Kq9bFjFsW05I4IHb2cJO.NizmTk44gHOCXzncvCcNWke0mnlFUZm",
+      "password": "$2a$10$x1c45VhDE7D8pHFuoxbtEuRn4zAACj/iszIxtrUeL.HHdpbdfdpP.",
       "name": "Ahmed Ben Salem",
       "avatar": "https://i.pravatar.cc/150?u=admin",
       "role": "admin",
@@ -13,13 +13,13 @@
       "joined_events": 89,
       "strava_connected": true,
       "strava_id": "strava_admin",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
+      "id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
       "email": "coach@rct.tn",
-      "password": "$2a$10$3Kq9bFjFsW05I4IHb2cJO.NizmTk44gHOCXzncvCcNWke0mnlFUZm",
+      "password": "$2a$10$x1c45VhDE7D8pHFuoxbtEuRn4zAACj/iszIxtrUeL.HHdpbdfdpP.",
       "name": "Fatma Trabelsi",
       "avatar": "https://i.pravatar.cc/150?u=coach",
       "role": "coach",
@@ -29,13 +29,13 @@
       "joined_events": 120,
       "strava_connected": true,
       "strava_id": "strava_coach",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "c589e167-d699-42e3-80b1-aa464a64580c",
+      "id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "email": "mohamed@rct.tn",
-      "password": "$2a$10$3Kq9bFjFsW05I4IHb2cJO.NizmTk44gHOCXzncvCcNWke0mnlFUZm",
+      "password": "$2a$10$x1c45VhDE7D8pHFuoxbtEuRn4zAACj/iszIxtrUeL.HHdpbdfdpP.",
       "name": "Mohamed Khelifi",
       "avatar": "https://i.pravatar.cc/150?u=mohamed",
       "role": "member",
@@ -45,13 +45,13 @@
       "joined_events": 34,
       "strava_connected": true,
       "strava_id": "strava_mohamed",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "4237e64b-d869-4339-83b1-bc54f7978763",
+      "id": "08ebb695-b215-4f9f-b8cf-92d128fb7bed",
       "email": "leila@rct.tn",
-      "password": "$2a$10$3Kq9bFjFsW05I4IHb2cJO.NizmTk44gHOCXzncvCcNWke0mnlFUZm",
+      "password": "$2a$10$x1c45VhDE7D8pHFuoxbtEuRn4zAACj/iszIxtrUeL.HHdpbdfdpP.",
       "name": "Leila Mansour",
       "avatar": "https://i.pravatar.cc/150?u=leila",
       "role": "member",
@@ -61,13 +61,13 @@
       "joined_events": 45,
       "strava_connected": false,
       "strava_id": null,
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "0836ecc3-d036-4504-b533-7318a502d71d",
+      "id": "d118eb03-247c-4893-9e6c-46f78baa7a1d",
       "email": "youssef@rct.tn",
-      "password": "$2a$10$3Kq9bFjFsW05I4IHb2cJO.NizmTk44gHOCXzncvCcNWke0mnlFUZm",
+      "password": "$2a$10$x1c45VhDE7D8pHFuoxbtEuRn4zAACj/iszIxtrUeL.HHdpbdfdpP.",
       "name": "Youssef Chaabane",
       "avatar": "https://i.pravatar.cc/150?u=youssef",
       "role": "member",
@@ -77,13 +77,13 @@
       "joined_events": 12,
       "strava_connected": true,
       "strava_id": "strava_youssef",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "fa9edae4-7a2e-41de-8f44-bae0d9a732ed",
+      "id": "ab7b3514-a9eb-40c5-b5d3-3a17274fbea5",
       "email": "amira@rct.tn",
-      "password": "$2a$10$3Kq9bFjFsW05I4IHb2cJO.NizmTk44gHOCXzncvCcNWke0mnlFUZm",
+      "password": "$2a$10$x1c45VhDE7D8pHFuoxbtEuRn4zAACj/iszIxtrUeL.HHdpbdfdpP.",
       "name": "Amira Bouazizi",
       "avatar": "https://i.pravatar.cc/150?u=amira",
       "role": "member",
@@ -93,13 +93,13 @@
       "joined_events": 8,
       "strava_connected": false,
       "strava_id": null,
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "cece1a5f-50b8-46db-b3e2-b16dd5421fff",
+      "id": "ab1122ea-7ba0-4ad6-8653-c539cb331258",
       "email": "karim@rct.tn",
-      "password": "$2a$10$3Kq9bFjFsW05I4IHb2cJO.NizmTk44gHOCXzncvCcNWke0mnlFUZm",
+      "password": "$2a$10$x1c45VhDE7D8pHFuoxbtEuRn4zAACj/iszIxtrUeL.HHdpbdfdpP.",
       "name": "Karim Mejri",
       "avatar": "https://i.pravatar.cc/150?u=karim",
       "role": "member",
@@ -109,13 +109,13 @@
       "joined_events": 67,
       "strava_connected": true,
       "strava_id": "strava_karim",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "events": [
     {
-      "id": "53ed89fc-d30d-4513-bdef-d867ee06ba93",
+      "id": "0d44055f-6575-411f-93f3-1b9ce0c8bcab",
       "title": "Sortie Hebdomadaire - Lac de Tunis",
       "description": "Notre sortie classique du samedi matin autour du lac de Tunis. Parcours plat idéal pour tous les niveaux.",
       "date": "2026-02-08",
@@ -126,12 +126,12 @@
       "group_name": "Tous niveaux",
       "event_type": "Sortie",
       "max_participants": 50,
-      "created_by": "f4e07428-e51c-4b03-9973-2c874e79abbf",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_by": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "4316b8f1-ccc4-4dc9-bb53-69954faba0e7",
+      "id": "17b1225e-c2b6-4f0e-89f0-19404f9147d2",
       "title": "Entraînement Fractionné",
       "description": "Session de fractionné : 10x400m avec récupération active. Parfait pour améliorer votre VMA.",
       "date": "2026-02-08",
@@ -142,12 +142,12 @@
       "group_name": "Intermédiaire",
       "event_type": "Entraînement",
       "max_participants": 25,
-      "created_by": "f4e07428-e51c-4b03-9973-2c874e79abbf",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_by": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "ecf723e9-fe9f-404b-8cd7-86b750ba02b8",
+      "id": "e35dee42-4df7-4d80-83f4-0ffeb6ef4a8f",
       "title": "Sortie Longue - Semi-Marathon",
       "description": "Préparation pour le semi-marathon de Carthage. Sortie longue de 21km à allure marathon.",
       "date": "2026-02-14",
@@ -158,12 +158,12 @@
       "group_name": "Élite",
       "event_type": "Sortie",
       "max_participants": 30,
-      "created_by": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_by": "b608526f-a486-47e5-81e0-e8cb01e718e9",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "28307c79-e2fd-4651-b15a-950146928bba",
+      "id": "5d9abe99-f307-45b1-9629-fe77d0180f2c",
       "title": "Initiation Course à Pied",
       "description": "Session découverte pour les nouveaux coureurs. Techniques de base et conseils pour bien débuter.",
       "date": "2026-02-14",
@@ -174,221 +174,221 @@
       "group_name": "Débutant",
       "event_type": "Initiation",
       "max_participants": 20,
-      "created_by": "f4e07428-e51c-4b03-9973-2c874e79abbf",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_by": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "event_participants": [
     {
-      "event_id": "53ed89fc-d30d-4513-bdef-d867ee06ba93",
-      "user_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "0d44055f-6575-411f-93f3-1b9ce0c8bcab",
+      "user_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "53ed89fc-d30d-4513-bdef-d867ee06ba93",
-      "user_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "0d44055f-6575-411f-93f3-1b9ce0c8bcab",
+      "user_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "53ed89fc-d30d-4513-bdef-d867ee06ba93",
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "0d44055f-6575-411f-93f3-1b9ce0c8bcab",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "53ed89fc-d30d-4513-bdef-d867ee06ba93",
-      "user_id": "4237e64b-d869-4339-83b1-bc54f7978763",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "0d44055f-6575-411f-93f3-1b9ce0c8bcab",
+      "user_id": "08ebb695-b215-4f9f-b8cf-92d128fb7bed",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "53ed89fc-d30d-4513-bdef-d867ee06ba93",
-      "user_id": "cece1a5f-50b8-46db-b3e2-b16dd5421fff",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "0d44055f-6575-411f-93f3-1b9ce0c8bcab",
+      "user_id": "ab1122ea-7ba0-4ad6-8653-c539cb331258",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "4316b8f1-ccc4-4dc9-bb53-69954faba0e7",
-      "user_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "17b1225e-c2b6-4f0e-89f0-19404f9147d2",
+      "user_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "4316b8f1-ccc4-4dc9-bb53-69954faba0e7",
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "17b1225e-c2b6-4f0e-89f0-19404f9147d2",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "4316b8f1-ccc4-4dc9-bb53-69954faba0e7",
-      "user_id": "cece1a5f-50b8-46db-b3e2-b16dd5421fff",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "17b1225e-c2b6-4f0e-89f0-19404f9147d2",
+      "user_id": "ab1122ea-7ba0-4ad6-8653-c539cb331258",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "ecf723e9-fe9f-404b-8cd7-86b750ba02b8",
-      "user_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "e35dee42-4df7-4d80-83f4-0ffeb6ef4a8f",
+      "user_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "ecf723e9-fe9f-404b-8cd7-86b750ba02b8",
-      "user_id": "cece1a5f-50b8-46db-b3e2-b16dd5421fff",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "e35dee42-4df7-4d80-83f4-0ffeb6ef4a8f",
+      "user_id": "ab1122ea-7ba0-4ad6-8653-c539cb331258",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "28307c79-e2fd-4651-b15a-950146928bba",
-      "user_id": "0836ecc3-d036-4504-b533-7318a502d71d",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "5d9abe99-f307-45b1-9629-fe77d0180f2c",
+      "user_id": "d118eb03-247c-4893-9e6c-46f78baa7a1d",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "event_id": "28307c79-e2fd-4651-b15a-950146928bba",
-      "user_id": "fa9edae4-7a2e-41de-8f44-bae0d9a732ed",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "event_id": "5d9abe99-f307-45b1-9629-fe77d0180f2c",
+      "user_id": "ab7b3514-a9eb-40c5-b5d3-3a17274fbea5",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "posts": [
     {
-      "id": "febe30a8-a825-4567-825b-495dcb543a6e",
-      "author_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
+      "id": "a0747a72-b69e-47ff-b2a1-45de81bbb76d",
+      "author_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
       "content": "🏃‍♀️ Superbe sortie ce matin au lac de Tunis ! 15km à 5:30/km avec le groupe Intermédiaire. Bravo à tous pour votre motivation malgré le vent ! #RCT #Running #LacTunis",
       "image": "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=400",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "0418803a-a507-4e10-a538-a248a39210df",
-      "author_id": "c589e167-d699-42e3-80b1-aa464a64580c",
+      "id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
+      "author_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "content": "Premier semi-marathon terminé ! 1h52 🎉 Merci à tout le club pour les encouragements et les conseils de préparation. Maintenant direction le marathon ! 💪",
       "image": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=400",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "d2b85f1e-26b6-412b-b9bc-bc948f1a4668",
-      "author_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
+      "id": "089d75bb-6e8b-499b-9779-3ade3dd2709d",
+      "author_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
       "content": "📢 Inscriptions ouvertes pour le 10km de Carthage ! Tarif préférentiel pour les membres RCT. Contactez-nous pour plus d'infos.",
       "image": null,
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "post_likes": [
     {
-      "post_id": "febe30a8-a825-4567-825b-495dcb543a6e",
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "a0747a72-b69e-47ff-b2a1-45de81bbb76d",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "febe30a8-a825-4567-825b-495dcb543a6e",
-      "user_id": "4237e64b-d869-4339-83b1-bc54f7978763",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "a0747a72-b69e-47ff-b2a1-45de81bbb76d",
+      "user_id": "08ebb695-b215-4f9f-b8cf-92d128fb7bed",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "febe30a8-a825-4567-825b-495dcb543a6e",
-      "user_id": "cece1a5f-50b8-46db-b3e2-b16dd5421fff",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "a0747a72-b69e-47ff-b2a1-45de81bbb76d",
+      "user_id": "ab1122ea-7ba0-4ad6-8653-c539cb331258",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "febe30a8-a825-4567-825b-495dcb543a6e",
-      "user_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "a0747a72-b69e-47ff-b2a1-45de81bbb76d",
+      "user_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "0418803a-a507-4e10-a538-a248a39210df",
-      "user_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
+      "user_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "0418803a-a507-4e10-a538-a248a39210df",
-      "user_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
+      "user_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "0418803a-a507-4e10-a538-a248a39210df",
-      "user_id": "4237e64b-d869-4339-83b1-bc54f7978763",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
+      "user_id": "08ebb695-b215-4f9f-b8cf-92d128fb7bed",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "0418803a-a507-4e10-a538-a248a39210df",
-      "user_id": "0836ecc3-d036-4504-b533-7318a502d71d",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
+      "user_id": "d118eb03-247c-4893-9e6c-46f78baa7a1d",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "0418803a-a507-4e10-a538-a248a39210df",
-      "user_id": "fa9edae4-7a2e-41de-8f44-bae0d9a732ed",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
+      "user_id": "ab7b3514-a9eb-40c5-b5d3-3a17274fbea5",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "0418803a-a507-4e10-a538-a248a39210df",
-      "user_id": "cece1a5f-50b8-46db-b3e2-b16dd5421fff",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
+      "user_id": "ab1122ea-7ba0-4ad6-8653-c539cb331258",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "d2b85f1e-26b6-412b-b9bc-bc948f1a4668",
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "089d75bb-6e8b-499b-9779-3ade3dd2709d",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "post_id": "d2b85f1e-26b6-412b-b9bc-bc948f1a4668",
-      "user_id": "cece1a5f-50b8-46db-b3e2-b16dd5421fff",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "post_id": "089d75bb-6e8b-499b-9779-3ade3dd2709d",
+      "user_id": "ab1122ea-7ba0-4ad6-8653-c539cb331258",
+      "created_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "comments": [
     {
-      "id": "771b55e1-ef6d-4b4c-92c9-c20a02b454aa",
-      "post_id": "febe30a8-a825-4567-825b-495dcb543a6e",
-      "author_id": "c589e167-d699-42e3-80b1-aa464a64580c",
+      "id": "101447e5-cda6-4d1c-8108-f7533aa08ab6",
+      "post_id": "a0747a72-b69e-47ff-b2a1-45de81bbb76d",
+      "author_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "content": "C'était top ! Vivement la prochaine 💪",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "cacc55af-564b-4749-acf5-1bd9f524364c",
-      "post_id": "febe30a8-a825-4567-825b-495dcb543a6e",
-      "author_id": "4237e64b-d869-4339-83b1-bc54f7978763",
+      "id": "b96463b2-d7a1-4d56-927b-e96b7207e580",
+      "post_id": "a0747a72-b69e-47ff-b2a1-45de81bbb76d",
+      "author_id": "08ebb695-b215-4f9f-b8cf-92d128fb7bed",
       "content": "Merci coach pour les conseils !",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "946e81cb-3723-4fd1-aaba-b7c38737dc71",
-      "post_id": "0418803a-a507-4e10-a538-a248a39210df",
-      "author_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
+      "id": "5cf27f7f-dbe6-4bde-a066-9bd9da5bbcd8",
+      "post_id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
+      "author_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
       "content": "Félicitations Mohamed ! Belle progression !",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "66780ca6-98f0-4729-abb9-94c3fc7fcf85",
-      "post_id": "0418803a-a507-4e10-a538-a248a39210df",
-      "author_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
+      "id": "39f35581-cfcc-4637-9dde-359d558904e1",
+      "post_id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
+      "author_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
       "content": "Bravo ! Le marathon c'est pour quand ? 😄",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "stories": [
     {
-      "id": "c49003ad-7ca7-47d0-b3e1-4c7e64011af8",
-      "user_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
+      "id": "248400d0-0664-43aa-8645-05dc94c774fe",
+      "user_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
       "image": "https://images.unsplash.com/photo-1461896836934-428b3e8bd60a?w=400",
       "caption": "Entraînement matinal 🌅",
-      "expires_at": "2026-02-08T08:56:27.780Z",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "expires_at": "2026-02-08T10:30:19.762Z",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "21c96dbb-eca7-49a8-8f18-a4e0b240cfd9",
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
+      "id": "15199f0d-1474-4fbf-836a-90edc0edd89a",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "image": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=400",
       "caption": "Nouveau PR sur 10km ! 🎉",
-      "expires_at": "2026-02-08T08:56:27.780Z",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "expires_at": "2026-02-08T10:30:19.762Z",
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "7ffce9cb-6e5f-44a1-91eb-e995065ba043",
-      "user_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
+      "id": "3f9e8c51-c0be-4d0f-b99c-af759dd70511",
+      "user_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
       "image": "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=400",
       "caption": "RCT en force 💪🇹🇳",
-      "expires_at": "2026-02-08T08:56:27.780Z",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "expires_at": "2026-02-08T10:30:19.762Z",
+      "created_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "story_views": [],
   "courses": [
     {
-      "id": "a5fa5c5e-5f96-4efd-bf9b-076b515c2bbd",
+      "id": "561859aa-17eb-4124-8124-90d5fd6be29b",
       "name": "Tour du Lac de Tunis",
       "description": "Parcours classique autour du lac. Surface plate, idéal pour les débutants et le tempo.",
       "distance": 10.5,
@@ -396,12 +396,12 @@
       "location": "Lac de Tunis",
       "start_point": "{\"lat\":36.8382,\"lng\":10.2351}",
       "route_points": "[{\"lat\":36.8382,\"lng\":10.2351},{\"lat\":36.845,\"lng\":10.24},{\"lat\":36.85,\"lng\":10.245}]",
-      "created_by": "f4e07428-e51c-4b03-9973-2c874e79abbf",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_by": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "bec8ccb0-bbd6-40e8-896e-71ec570682c1",
+      "id": "4e7cbc22-913a-4cf7-a6a0-3421095915df",
       "name": "Boucle du Belvédère",
       "description": "Parcours vallonné à travers le parc. Bon pour le travail de côtes.",
       "distance": 5.2,
@@ -409,12 +409,12 @@
       "location": "Parc du Belvédère",
       "start_point": "{\"lat\":36.8167,\"lng\":10.175}",
       "route_points": "[{\"lat\":36.8167,\"lng\":10.175},{\"lat\":36.82,\"lng\":10.178}]",
-      "created_by": "f4e07428-e51c-4b03-9973-2c874e79abbf",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_by": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "767812eb-3dc9-431f-9009-52e49142827a",
+      "id": "9478c968-c36f-47bc-88a3-6dbd9eac5952",
       "name": "Carthage Historique",
       "description": "Parcours panoramique entre les ruines de Carthage avec vue sur la mer.",
       "distance": 15,
@@ -422,12 +422,12 @@
       "location": "Carthage",
       "start_point": "{\"lat\":36.8503,\"lng\":10.3252}",
       "route_points": "[{\"lat\":36.8503,\"lng\":10.3252},{\"lat\":36.855,\"lng\":10.33}]",
-      "created_by": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_by": "b608526f-a486-47e5-81e0-e8cb01e718e9",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "1f180c5a-e57e-4041-a3bc-059caf1ff077",
+      "id": "ac4b9941-040c-4f19-8ae3-345cd1f25ddd",
       "name": "Circuit Radiant",
       "description": "Parcours urbain dans le quartier de Radiant avec plusieurs variantes possibles.",
       "distance": 7.8,
@@ -435,208 +435,208 @@
       "location": "Radiant - Ariana",
       "start_point": "{\"lat\":36.86,\"lng\":10.165}",
       "route_points": "[{\"lat\":36.86,\"lng\":10.165},{\"lat\":36.865,\"lng\":10.17}]",
-      "created_by": "c589e167-d699-42e3-80b1-aa464a64580c",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "created_by": "7f702a79-2a60-4880-a771-13b6098d7fc1",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "ratings": [
     {
-      "id": "40e9e583-38f3-488d-9b12-b6abcfb36bc5",
-      "course_id": "a5fa5c5e-5f96-4efd-bf9b-076b515c2bbd",
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
+      "id": "9efad993-96fb-48b7-8712-f99da1fa18c9",
+      "course_id": "561859aa-17eb-4124-8124-90d5fd6be29b",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "rating": 5,
       "comment": "Parfait pour les sorties matinales!",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "2f9eeba6-cdb3-48ff-a9b6-49319c355ea7",
-      "course_id": "a5fa5c5e-5f96-4efd-bf9b-076b515c2bbd",
-      "user_id": "4237e64b-d869-4339-83b1-bc54f7978763",
+      "id": "8a76aa1d-28b4-4ba1-8e4c-f7c85c4d95b8",
+      "course_id": "561859aa-17eb-4124-8124-90d5fd6be29b",
+      "user_id": "08ebb695-b215-4f9f-b8cf-92d128fb7bed",
       "rating": 4,
       "comment": "Très agréable, un peu monotone quand même.",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "26f10927-8374-4e3f-aa6d-7f51704c86ec",
-      "course_id": "bec8ccb0-bbd6-40e8-896e-71ec570682c1",
-      "user_id": "0836ecc3-d036-4504-b533-7318a502d71d",
+      "id": "79358d00-790c-4cb8-b5ba-15b912bd164c",
+      "course_id": "4e7cbc22-913a-4cf7-a6a0-3421095915df",
+      "user_id": "d118eb03-247c-4893-9e6c-46f78baa7a1d",
       "rating": 4,
       "comment": "Super pour s'entraîner sur les côtes.",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "490cab92-6629-40b8-ac73-d29586a8211d",
-      "course_id": "767812eb-3dc9-431f-9009-52e49142827a",
-      "user_id": "cece1a5f-50b8-46db-b3e2-b16dd5421fff",
+      "id": "5805c5b4-866b-41cb-a1d4-7f90832d02b4",
+      "course_id": "9478c968-c36f-47bc-88a3-6dbd9eac5952",
+      "user_id": "ab1122ea-7ba0-4ad6-8653-c539cb331258",
       "rating": 5,
       "comment": "Magnifique parcours, vue exceptionnelle!",
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "notifications": [
     {
-      "id": "c533c0eb-eaa1-4148-b488-81c37a6f9ef7",
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
+      "id": "4df8ba24-d8cf-413f-ad59-8c81a4ff976f",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "type": "event",
       "title": "Nouvel événement",
       "message": "Sortie Hebdomadaire - Lac de Tunis a été créé",
-      "related_id": "53ed89fc-d30d-4513-bdef-d867ee06ba93",
+      "related_id": "0d44055f-6575-411f-93f3-1b9ce0c8bcab",
       "read": false,
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "3a40dc50-25d6-4c28-b45b-8a1d47e30e8e",
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
+      "id": "734133d9-0c21-4862-853c-6cbb1cdb52da",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "type": "like",
       "title": "Nouveau like",
       "message": "Fatma Trabelsi a aimé votre publication",
-      "related_id": "0418803a-a507-4e10-a538-a248a39210df",
+      "related_id": "0a2ef892-69e9-48cf-93b8-9813873b262b",
       "read": false,
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "8674df19-7714-464d-95a5-aba598ce1008",
-      "user_id": "4237e64b-d869-4339-83b1-bc54f7978763",
+      "id": "ef882030-ba53-479a-aa56-624af8734b06",
+      "user_id": "08ebb695-b215-4f9f-b8cf-92d128fb7bed",
       "type": "comment",
       "title": "Nouveau commentaire",
       "message": "Mohamed a commenté une publication",
-      "related_id": "febe30a8-a825-4567-825b-495dcb543a6e",
+      "related_id": "a0747a72-b69e-47ff-b2a1-45de81bbb76d",
       "read": false,
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "d7652c13-4efd-4f18-931c-763e7d11bea0",
-      "user_id": "0836ecc3-d036-4504-b533-7318a502d71d",
+      "id": "578670d5-e7b4-4bc2-9b88-07ec21ef30c9",
+      "user_id": "d118eb03-247c-4893-9e6c-46f78baa7a1d",
       "type": "reminder",
       "title": "Rappel",
       "message": "L'événement Initiation Course à Pied commence bientôt",
-      "related_id": "28307c79-e2fd-4651-b15a-950146928bba",
+      "related_id": "5d9abe99-f307-45b1-9629-fe77d0180f2c",
       "read": false,
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "conversations": [
     {
-      "id": "702b9223-889f-428a-8142-e097e67f8c17",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "id": "4d261f3d-770a-488f-a138-3f5ff3f72921",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "af3ec6b7-ca51-466c-a4ea-bdb6b77d11ff",
-      "created_at": "2026-02-07T08:56:27.777Z",
-      "updated_at": "2026-02-07T08:56:27.777Z"
+      "id": "ac7a2298-c914-4af9-adef-49e006ce9ea1",
+      "created_at": "2026-02-07T10:30:19.758Z",
+      "updated_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "conversation_participants": [
     {
-      "conversation_id": "702b9223-889f-428a-8142-e097e67f8c17",
-      "user_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "conversation_id": "4d261f3d-770a-488f-a138-3f5ff3f72921",
+      "user_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "conversation_id": "702b9223-889f-428a-8142-e097e67f8c17",
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "conversation_id": "4d261f3d-770a-488f-a138-3f5ff3f72921",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "conversation_id": "af3ec6b7-ca51-466c-a4ea-bdb6b77d11ff",
-      "user_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "conversation_id": "ac7a2298-c914-4af9-adef-49e006ce9ea1",
+      "user_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "conversation_id": "af3ec6b7-ca51-466c-a4ea-bdb6b77d11ff",
-      "user_id": "0836ecc3-d036-4504-b533-7318a502d71d",
-      "joined_at": "2026-02-07T08:56:27.777Z"
+      "conversation_id": "ac7a2298-c914-4af9-adef-49e006ce9ea1",
+      "user_id": "d118eb03-247c-4893-9e6c-46f78baa7a1d",
+      "joined_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "messages": [
     {
-      "id": "51a78cbf-162b-41d1-b3b9-1cc4e26a451d",
-      "conversation_id": "702b9223-889f-428a-8142-e097e67f8c17",
-      "sender_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
+      "id": "ba4fa094-2e5a-41dd-96ad-3ebc987be274",
+      "conversation_id": "4d261f3d-770a-488f-a138-3f5ff3f72921",
+      "sender_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
       "content": "Salut Mohamed ! Tu es dispo pour la sortie de samedi ?",
       "read": true,
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "a407d8c1-f25e-446f-b5e8-8218f5decb84",
-      "conversation_id": "702b9223-889f-428a-8142-e097e67f8c17",
-      "sender_id": "c589e167-d699-42e3-80b1-aa464a64580c",
+      "id": "5fe9c631-20b4-4cf0-a211-ae4b41931a40",
+      "conversation_id": "4d261f3d-770a-488f-a138-3f5ff3f72921",
+      "sender_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "content": "Oui je serai là ! À quelle heure exactement ?",
       "read": true,
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "db5ac920-cd46-4c03-a28d-05ce51582816",
-      "conversation_id": "702b9223-889f-428a-8142-e097e67f8c17",
-      "sender_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
+      "id": "8be1007c-83c5-4821-bab5-b5d95bb6e268",
+      "conversation_id": "4d261f3d-770a-488f-a138-3f5ff3f72921",
+      "sender_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
       "content": "RDV à 7h au parking du lac. On fera 15km.",
       "read": false,
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "87ff6296-47dd-400a-bfdc-9bcb8ef9e29a",
-      "conversation_id": "af3ec6b7-ca51-466c-a4ea-bdb6b77d11ff",
-      "sender_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
+      "id": "bb18c561-9b1b-43cd-a979-16f4b4fafb5f",
+      "conversation_id": "ac7a2298-c914-4af9-adef-49e006ce9ea1",
+      "sender_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
       "content": "Bienvenue au club Youssef ! N'hésite pas si tu as des questions.",
       "read": true,
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     },
     {
-      "id": "4f4dac33-b806-405f-8cc3-323b9b847568",
-      "conversation_id": "af3ec6b7-ca51-466c-a4ea-bdb6b77d11ff",
-      "sender_id": "0836ecc3-d036-4504-b533-7318a502d71d",
+      "id": "7726b66d-b19a-4b3a-9c92-e211eda306bf",
+      "conversation_id": "ac7a2298-c914-4af9-adef-49e006ce9ea1",
+      "sender_id": "d118eb03-247c-4893-9e6c-46f78baa7a1d",
       "content": "Merci beaucoup ! J'ai hâte de participer à ma première sortie.",
       "read": false,
-      "created_at": "2026-02-07T08:56:27.777Z"
+      "created_at": "2026-02-07T10:30:19.758Z"
     }
   ],
   "user_settings": [
     {
-      "user_id": "1a413a19-ec81-4e3d-a888-c3a06b0fec38",
+      "user_id": "b608526f-a486-47e5-81e0-e8cb01e718e9",
       "theme": "system",
       "language": "fr",
       "notifications_enabled": true,
       "email_notifications": true
     },
     {
-      "user_id": "f4e07428-e51c-4b03-9973-2c874e79abbf",
+      "user_id": "b6779fdd-0130-4794-8dd9-4aa6015b3585",
       "theme": "system",
       "language": "fr",
       "notifications_enabled": true,
       "email_notifications": true
     },
     {
-      "user_id": "c589e167-d699-42e3-80b1-aa464a64580c",
+      "user_id": "7f702a79-2a60-4880-a771-13b6098d7fc1",
       "theme": "system",
       "language": "fr",
       "notifications_enabled": true,
       "email_notifications": true
     },
     {
-      "user_id": "4237e64b-d869-4339-83b1-bc54f7978763",
+      "user_id": "08ebb695-b215-4f9f-b8cf-92d128fb7bed",
       "theme": "system",
       "language": "fr",
       "notifications_enabled": true,
       "email_notifications": true
     },
     {
-      "user_id": "0836ecc3-d036-4504-b533-7318a502d71d",
+      "user_id": "d118eb03-247c-4893-9e6c-46f78baa7a1d",
       "theme": "system",
       "language": "fr",
       "notifications_enabled": true,
       "email_notifications": true
     },
     {
-      "user_id": "fa9edae4-7a2e-41de-8f44-bae0d9a732ed",
+      "user_id": "ab7b3514-a9eb-40c5-b5d3-3a17274fbea5",
       "theme": "system",
       "language": "fr",
       "notifications_enabled": true,
       "email_notifications": true
     },
     {
-      "user_id": "cece1a5f-50b8-46db-b3e2-b16dd5421fff",
+      "user_id": "ab1122ea-7ba0-4ad6-8653-c539cb331258",
       "theme": "system",
       "language": "fr",
       "notifications_enabled": true,

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Circle Border -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#000" stroke-width="4"/>
+  
+  <!-- Text: RUNNING -->
+  <path id="topPath" d="M 30,100 A 70,70 0 0,1 170,100" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#000">
+    <textPath href="#topPath" startOffset="50%" text-anchor="middle">
+      RUNNING
+    </textPath>
+  </text>
+  
+  <!-- Text: CLUB TUNIS -->
+  <path id="bottomPath" d="M 170,100 A 70,70 0 0,1 30,100" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#000">
+    <textPath href="#bottomPath" startOffset="50%" text-anchor="middle">
+      CLUB TUNIS
+    </textPath>
+  </text>
+  
+  <!-- Center Circle Background -->
+  <circle cx="100" cy="100" r="45" fill="white"/>
+  
+  <!-- Red Arrow Logo (Running Symbol) -->
+  <g transform="translate(100, 100)">
+    <!-- First Arrow -->
+    <path d="M -20,-15 L 0,-15 L 10,0 L 0,15 L -20,15 L -10,0 Z" fill="#E53935"/>
+    
+    <!-- Second Arrow -->
+    <path d="M 5,-15 L 25,-15 L 35,0 L 25,15 L 5,15 L 15,0 Z" fill="#E53935"/>
+  </g>
+</svg>

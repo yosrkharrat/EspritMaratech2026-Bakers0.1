@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Bell, Plus, BookOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import heroBanner from '@/assets/hero-banner.jpg';
+import rctLogo from '@/assets/rct-logo.svg';
 import StoriesBar from '@/components/StoriesBar';
 import PostCard from '@/components/PostCard';
 import EventCard from '@/components/EventCard';
@@ -60,9 +61,12 @@ const HomePage = () => {
         <img src={heroBanner} alt="Running Club Tunis" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
         <div className="absolute top-0 left-0 right-0 flex items-center justify-between p-4 pt-2">
-          <div>
-            <h1 className="font-display font-extrabold text-xl text-primary-foreground drop-shadow-lg">RCT</h1>
-            <p className="text-[11px] text-primary-foreground/80 font-body drop-shadow">Running Club Tunis</p>
+          <div className="flex items-center gap-2">
+            <img src={rctLogo} alt="RCT Logo" className="h-12 w-12 drop-shadow-lg" />
+            <div>
+              <h1 className="font-display font-extrabold text-xl text-primary-foreground drop-shadow-lg">RCT</h1>
+              <p className="text-[11px] text-primary-foreground/80 font-body drop-shadow">Running Club Tunis</p>
+            </div>
           </div>
           <div className="flex gap-2">
             <button onClick={() => navigate('/history')} className="w-10 h-10 rounded-full bg-card/20 backdrop-blur-md flex items-center justify-center">
