@@ -1,86 +1,115 @@
-import { Settings, Trophy, TrendingUp, Calendar, MapPin, ChevronRight } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { getEvents, getPosts } from '@/lib/store';
+import {
+  Settings, MessageSquare, Activity, Trophy, ChevronRight,
+  Shield, Star, Calendar, MapPin, LogIn
+} from 'lucide-react';
 
-const stats = [
-  { label: "Distance totale", value: "847 km", icon: MapPin, trend: "+12%" },
-  { label: "Courses", value: "156", icon: Calendar, trend: "+8%" },
-  { label: "Classement", value: "#12", icon: Trophy, trend: "↑3" },
-  { label: "Série", value: "14 jours", icon: TrendingUp, trend: "Record !" },
-];
+const ProfilePage = () => {
+  const navigate = useNavigate();
+  const { user, isLoggedIn, logout } = useAuth();
+  const events = getEvents();
+  const posts = getPosts();
 
-const menuItems = [
-  { label: "Mes activités", count: "156" },
-  { label: "Programmes d'entraînement", count: "3" },
-  { label: "Groupes", count: "2" },
-  { label: "Badges & accomplissements", count: "8" },
-  { label: "Connecter Strava", count: "" },
-  { label: "Paramètres", count: "" },
-];
-
-const ProfilePage = () => (
-  <div className="pb-20 pt-6">
-    {/* Header */}
-    <div className="flex items-center justify-between px-4 mb-6">
-      <h1 className="font-display font-extrabold text-2xl">Profil</h1>
-      <button className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
-        <Settings className="w-5 h-5" />
-      </button>
-    </div>
-
-    {/* Profile card */}
-    <div className="mx-4 bg-card rounded-2xl rct-shadow-elevated p-6 text-center mb-4">
-      <Avatar className="w-24 h-24 mx-auto mb-3 ring-4 ring-primary/20">
-        <AvatarFallback className="rct-gradient-hero text-primary-foreground font-display text-2xl font-bold">
-          RC
-        </AvatarFallback>
-      </Avatar>
-      <h2 className="font-display font-bold text-xl">Coureur RCT</h2>
-      <p className="text-sm text-muted-foreground mt-1">Membre depuis Avril 2023</p>
-      <div className="flex justify-center gap-6 mt-4">
-        <div className="text-center">
-          <p className="font-display font-bold text-lg rct-text-gradient">847</p>
-          <p className="text-[11px] text-muted-foreground">km</p>
-        </div>
-        <div className="w-px bg-border" />
-        <div className="text-center">
-          <p className="font-display font-bold text-lg rct-text-gradient">156</p>
-          <p className="text-[11px] text-muted-foreground">sorties</p>
-        </div>
-        <div className="w-px bg-border" />
-        <div className="text-center">
-          <p className="font-display font-bold text-lg rct-text-gradient">5:12</p>
-          <p className="text-[11px] text-muted-foreground">pace moy.</p>
+  if (!isLoggedIn || !user) {
+    return (
+      <div className="pb-20 pt-6 px-4">
+        <h1 className="font-display font-extrabold text-2xl mb-4">Profil</h1>
+        <div className="bg-card rounded-2xl rct-shadow-card p-8 text-center space-y-4">
+          <p className="text-muted-foreground">Connectez-vous pour voir votre profil</p>
+          <button onClick={() => navigate('/login')}
+            className="rct-gradient-hero text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 mx-auto">
+            <LogIn className="w-5 h-5" /> Se connecter
+          </button>
         </div>
       </div>
-    </div>
+    );
+  }
 
-    {/* Stats grid */}
-    <div className="grid grid-cols-2 gap-3 px-4 mb-4">
-      {stats.map((stat) => (
-        <div key={stat.label} className="bg-card rounded-2xl rct-shadow-card p-4">
-          <div className="flex items-center gap-2 mb-2">
-            <stat.icon className="w-4 h-4 text-primary" />
-            <span className="text-[11px] text-muted-foreground">{stat.label}</span>
+  const myEvents = events.filter(e => e.participants.includes(user.id));
+  const myPosts = posts.filter(p => p.authorId === user.id);
+  const totalDistance = myPosts.reduce((acc, p) => acc + (p.distance || 0), 0);
+
+  const roleBadge = () => {
+    switch (user.role) {
+      case 'admin': return { label: 'Admin', color: 'bg-red-500', icon: Shield };
+      case 'coach': return { label: 'Coach', color: 'bg-purple-500', icon: Trophy };
+      case 'group_admin': return { label: 'Chef de groupe', color: 'bg-orange-500', icon: Star };
+      default: return { label: 'Membre', color: 'bg-blue-500', icon: Activity };
+    }
+  };
+
+  const badge = roleBadge();
+  const BadgeIcon = badge.icon;
+
+  const menuItems = [
+    { label: 'Messages', icon: MessageSquare, path: '/messaging', count: 0 },
+    { label: 'Strava', icon: Activity, path: '/strava' },
+    { label: 'Événements', icon: Calendar, path: '/calendar' },
+    { label: 'Parcours', icon: MapPin, path: '/map' },
+    { label: 'Réglages', icon: Settings, path: '/settings' },
+  ];
+
+  return (
+    <div className="pb-20 pt-6">
+      {/* Profile Header */}
+      <div className="px-4 mb-6">
+        <div className="bg-card rounded-2xl rct-shadow-card p-6">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-16 h-16 rounded-full rct-gradient-hero flex items-center justify-center rct-glow-blue">
+              <span className="text-2xl font-bold text-white">
+                {user.name.split(' ').map(n => n[0]).join('')}
+              </span>
+            </div>
+            <div className="flex-1">
+              <h2 className="font-display font-extrabold text-xl">{user.name}</h2>
+              <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-white ${badge.color} mt-1`}>
+                <BadgeIcon className="w-3 h-3" />
+                {badge.label}
+              </div>
+            </div>
           </div>
-          <p className="font-display font-bold text-xl">{stat.value}</p>
-          <span className="text-[11px] text-accent font-semibold">{stat.trend}</span>
+          {user.bio && <p className="text-sm text-muted-foreground mb-3">{user.bio}</p>}
+          {user.group && (
+            <p className="text-xs text-muted-foreground">Groupe: <span className="font-semibold text-foreground">{user.group}</span></p>
+          )}
         </div>
-      ))}
-    </div>
+      </div>
 
-    {/* Menu */}
-    <div className="mx-4 bg-card rounded-2xl rct-shadow-card overflow-hidden">
-      {menuItems.map((item, i) => (
-        <button key={i} className="w-full flex items-center justify-between px-4 py-3.5 border-b border-border last:border-0 hover:bg-muted/50 transition-colors">
-          <span className="text-sm font-medium">{item.label}</span>
-          <div className="flex items-center gap-2">
-            {item.count && <span className="text-xs text-muted-foreground">{item.count}</span>}
-            <ChevronRight className="w-4 h-4 text-muted-foreground" />
+      {/* Stats */}
+      <div className="px-4 mb-6">
+        <div className="grid grid-cols-3 gap-3">
+          <div className="bg-card rounded-2xl rct-shadow-card p-4 text-center">
+            <p className="text-2xl font-extrabold rct-text-gradient">{totalDistance.toFixed(1)}</p>
+            <p className="text-xs text-muted-foreground">km total</p>
           </div>
-        </button>
-      ))}
+          <div className="bg-card rounded-2xl rct-shadow-card p-4 text-center">
+            <p className="text-2xl font-extrabold rct-text-gradient">{myEvents.length}</p>
+            <p className="text-xs text-muted-foreground">événements</p>
+          </div>
+          <div className="bg-card rounded-2xl rct-shadow-card p-4 text-center">
+            <p className="text-2xl font-extrabold rct-text-gradient">{myPosts.length}</p>
+            <p className="text-xs text-muted-foreground">publications</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Menu */}
+      <div className="px-4 space-y-2">
+        {menuItems.map(item => (
+          <button key={item.label} onClick={() => navigate(item.path)}
+            className="w-full bg-card rounded-2xl rct-shadow-card p-4 flex items-center gap-4 active:scale-[.98] transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
+              <item.icon className="w-5 h-5 text-foreground" />
+            </div>
+            <span className="flex-1 text-left font-semibold">{item.label}</span>
+            <ChevronRight className="w-5 h-5 text-muted-foreground" />
+          </button>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ProfilePage;

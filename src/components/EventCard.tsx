@@ -1,56 +1,64 @@
-import { Calendar, MapPin, Users, Clock } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
+import { MapPin, Clock, Users, ChevronRight } from 'lucide-react';
+import type { RCTEvent } from '@/types';
 
 interface EventCardProps {
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  group: string;
-  type: "daily" | "weekly" | "race";
-  participants: number;
+  event: RCTEvent;
 }
 
-const typeStyles = {
-  daily: "bg-primary/10 text-primary",
-  weekly: "bg-secondary/10 text-secondary",
-  race: "bg-accent/10 text-accent",
+const typeBadge = (type: RCTEvent['type']) => {
+  switch (type) {
+    case 'daily': return { label: 'Quotidien', color: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300' };
+    case 'weekly': return { label: 'Hebdo', color: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' };
+    case 'race': return { label: 'Course', color: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300' };
+    case 'special': return { label: 'Spécial', color: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300' };
+    default: return { label: type, color: 'bg-muted text-muted-foreground' };
+  }
 };
 
-const typeLabels = {
-  daily: "Quotidien",
-  weekly: "Hebdomadaire",
-  race: "Course",
-};
+const EventCard = ({ event }: EventCardProps) => {
+  const navigate = useNavigate();
+  const badge = typeBadge(event.type);
+  const date = new Date(event.date);
+  const day = date.getDate();
+  const month = date.toLocaleDateString('fr-FR', { month: 'short' });
 
-const EventCard = ({ title, date, time, location, group, type, participants }: EventCardProps) => (
-  <div className="bg-card rounded-2xl rct-shadow-card p-4 space-y-3 animate-slide-up">
-    <div className="flex items-start justify-between">
-      <div className="space-y-1">
-        <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${typeStyles[type]}`}>
-          {typeLabels[type]}
-        </span>
-        <h3 className="font-display font-bold text-base mt-2">{title}</h3>
+  return (
+    <button
+      onClick={() => navigate(`/event/${event.id}`)}
+      className="w-full bg-card rounded-2xl rct-shadow-card p-4 flex items-center gap-4 active:scale-[.98] transition-transform text-left"
+    >
+      {/* Date badge */}
+      <div className="w-14 h-14 rounded-xl rct-gradient-hero flex flex-col items-center justify-center text-white flex-shrink-0">
+        <span className="text-lg font-extrabold leading-none">{day}</span>
+        <span className="text-[10px] uppercase font-semibold">{month}</span>
       </div>
-      <div className="flex -space-x-2">
-        {Array.from({ length: Math.min(participants, 3) }).map((_, i) => (
-          <div key={i} className="w-7 h-7 rounded-full rct-gradient-hero border-2 border-card flex items-center justify-center">
-            <span className="text-[10px] font-bold text-primary-foreground">{i + 1}</span>
-          </div>
-        ))}
-        {participants > 3 && (
-          <div className="w-7 h-7 rounded-full bg-muted border-2 border-card flex items-center justify-center">
-            <span className="text-[10px] font-semibold text-muted-foreground">+{participants - 3}</span>
-          </div>
-        )}
+
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 mb-1">
+          <h3 className="font-bold text-sm truncate">{event.title}</h3>
+          <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold flex-shrink-0 ${badge.color}`}>
+            {badge.label}
+          </span>
+        </div>
+        <div className="flex items-center gap-3 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1">
+            <Clock className="w-3 h-3" /> {event.time}
+          </span>
+          <span className="flex items-center gap-1">
+            <MapPin className="w-3 h-3" /> {event.location}
+          </span>
+        </div>
+        <div className="flex items-center gap-1 mt-1 text-xs text-muted-foreground">
+          <Users className="w-3 h-3" />
+          <span>{event.participants.length} participant{event.participants.length > 1 ? 's' : ''}</span>
+          {event.group && <span className="ml-2 text-primary font-medium">• {event.group}</span>}
+        </div>
       </div>
-    </div>
-    <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
-      <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" />{date}</span>
-      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" />{time}</span>
-      <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" />{location}</span>
-      <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" />{group}</span>
-    </div>
-  </div>
-);
+
+      <ChevronRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+    </button>
+  );
+};
 
 export default EventCard;

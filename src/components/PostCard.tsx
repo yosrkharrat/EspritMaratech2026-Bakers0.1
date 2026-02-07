@@ -1,86 +1,136 @@
-import { Heart, MessageCircle, Share2, Bookmark } from "lucide-react";
-import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useState } from 'react';
+import { Heart, MessageCircle, Share2, Send } from 'lucide-react';
+import { toggleLike, addComment, getUsers } from '@/lib/store';
+import { useAuth } from '@/contexts/AuthContext';
+import type { Post } from '@/types';
 
 interface PostCardProps {
-  author: string;
-  avatar: string;
-  time: string;
-  image: string;
-  caption: string;
-  likes: number;
-  comments: number;
-  distance?: string;
-  pace?: string;
+  post: Post;
 }
 
-const PostCard = ({ author, avatar, time, image, caption, likes, comments, distance, pace }: PostCardProps) => {
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(likes);
+const PostCard = ({ post }: PostCardProps) => {
+  const { user } = useAuth();
+  const users = getUsers();
+  const author = users.find(u => u.id === post.authorId);
+  const [liked, setLiked] = useState(user ? post.likes.includes(user.id) : false);
+  const [likeCount, setLikeCount] = useState(post.likes.length);
+  const [showComments, setShowComments] = useState(false);
+  const [commentText, setCommentText] = useState('');
+  const [comments, setComments] = useState(post.comments);
 
   const handleLike = () => {
+    if (!user) return;
+    toggleLike(post.id, user.id);
+    if (liked) {
+      setLikeCount(c => c - 1);
+    } else {
+      setLikeCount(c => c + 1);
+    }
     setLiked(!liked);
-    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+  };
+
+  const handleComment = () => {
+    if (!user || !commentText.trim()) return;
+    addComment(post.id, user.id, commentText.trim());
+    setComments(prev => [...prev, {
+      id: Date.now().toString(),
+      authorId: user.id,
+      content: commentText.trim(),
+      createdAt: new Date().toISOString(),
+    }]);
+    setCommentText('');
+  };
+
+  const timeAgo = (dateStr: string) => {
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 60) return `${mins}min`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h`;
+    return `${Math.floor(hrs / 24)}j`;
   };
 
   return (
-    <div className="bg-card rounded-2xl rct-shadow-card overflow-hidden animate-slide-up">
-      {/* Header */}
-      <div className="flex items-center gap-3 p-4">
-        <Avatar className="w-10 h-10 ring-2 ring-primary/20">
-          <AvatarImage src={avatar} />
-          <AvatarFallback className="rct-gradient-hero text-primary-foreground font-display text-sm">
-            {author.slice(0, 2).toUpperCase()}
-          </AvatarFallback>
-        </Avatar>
-        <div className="flex-1">
-          <p className="font-display font-semibold text-sm">{author}</p>
-          <p className="text-xs text-muted-foreground">{time}</p>
+    <div className="bg-card rounded-2xl rct-shadow-card overflow-hidden">
+      {/* Author header */}
+      <div className="flex items-center gap-3 p-4 pb-2">
+        <div className="w-9 h-9 rounded-full rct-gradient-hero flex items-center justify-center text-white text-sm font-bold">
+          {author?.name.split(' ').map(n => n[0]).join('') || '?'}
         </div>
-        {distance && (
-          <div className="flex gap-2">
-            <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">{distance}</span>
-            {pace && <span className="px-2 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">{pace}</span>}
+        <div className="flex-1 min-w-0">
+          <p className="font-bold text-sm truncate">{author?.name || 'Inconnu'}</p>
+          <p className="text-[11px] text-muted-foreground">{timeAgo(post.createdAt)}</p>
+        </div>
+        {post.distance && (
+          <div className="flex items-center gap-2">
+            <span className="text-xs bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 px-2 py-0.5 rounded-full font-semibold">
+              {post.distance} km
+            </span>
+            {post.pace && (
+              <span className="text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full font-semibold">
+                {post.pace}
+              </span>
+            )}
           </div>
         )}
       </div>
+
+      {/* Content */}
+      {post.content && (
+        <p className="px-4 pb-2 text-sm">{post.content}</p>
+      )}
 
       {/* Image */}
-      <div className="aspect-[4/3] bg-muted overflow-hidden">
-        <img src={image} alt={caption} className="w-full h-full object-cover" />
-      </div>
+      {post.image && (
+        <div className="w-full aspect-[4/3] bg-muted overflow-hidden">
+          <img src={post.image} alt="" className="w-full h-full object-cover" />
+        </div>
+      )}
 
       {/* Actions */}
-      <div className="p-4 space-y-2">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <button onClick={handleLike} className="transition-transform active:scale-125">
-              <Heart
-                className={`w-6 h-6 transition-colors ${liked ? "fill-destructive text-destructive" : "text-foreground"}`}
-              />
-            </button>
-            <button>
-              <MessageCircle className="w-6 h-6 text-foreground" />
-            </button>
-            <button>
-              <Share2 className="w-5 h-5 text-foreground" />
-            </button>
-          </div>
-          <button>
-            <Bookmark className="w-6 h-6 text-foreground" />
-          </button>
-        </div>
-        <p className="font-display font-semibold text-sm">{likeCount} j'aime</p>
-        <p className="text-sm">
-          <span className="font-display font-semibold">{author}</span>{" "}
-          <span className="text-muted-foreground">{caption}</span>
-        </p>
-        {comments > 0 && (
-          <button className="text-xs text-muted-foreground">
-            Voir les {comments} commentaires
-          </button>
-        )}
+      <div className="px-4 py-3 flex items-center gap-5">
+        <button onClick={handleLike} className="flex items-center gap-1.5 transition-all active:scale-90">
+          <Heart className={`w-5 h-5 ${liked ? 'fill-red-500 text-red-500' : 'text-muted-foreground'}`} />
+          <span className="text-sm font-medium">{likeCount}</span>
+        </button>
+        <button onClick={() => setShowComments(!showComments)} className="flex items-center gap-1.5">
+          <MessageCircle className="w-5 h-5 text-muted-foreground" />
+          <span className="text-sm font-medium">{comments.length}</span>
+        </button>
+        <button className="ml-auto">
+          <Share2 className="w-5 h-5 text-muted-foreground" />
+        </button>
       </div>
+
+      {/* Comments */}
+      {showComments && (
+        <div className="px-4 pb-4 border-t border-border pt-3 space-y-2">
+          {comments.map(c => {
+            const commenter = users.find(u => u.id === c.authorId);
+            return (
+              <div key={c.id} className="text-sm">
+                <span className="font-bold">{commenter?.name || 'Inconnu'}</span>{' '}
+                <span className="text-muted-foreground">{c.content}</span>
+              </div>
+            );
+          })}
+          {user && (
+            <div className="flex items-center gap-2 mt-2">
+              <input
+                value={commentText}
+                onChange={e => setCommentText(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleComment()}
+                placeholder="Commenter..."
+                className="flex-1 bg-muted rounded-full px-3 py-2 text-sm outline-none"
+              />
+              <button onClick={handleComment}
+                className="w-8 h-8 rounded-full rct-gradient-hero flex items-center justify-center">
+                <Send className="w-4 h-4 text-white" />
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -2,37 +2,91 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Capacitor } from "@capacitor/core";
+import { App as CapApp } from "@capacitor/app";
+import { useEffect } from "react";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import BottomNav from "@/components/BottomNav";
 import HomePage from "@/pages/HomePage";
 import CalendarPage from "@/pages/CalendarPage";
 import MapPage from "@/pages/MapPage";
 import CommunityPage from "@/pages/CommunityPage";
 import ProfilePage from "@/pages/ProfilePage";
+import LoginPage from "@/pages/LoginPage";
+import HistoryPage from "@/pages/HistoryPage";
+import CreateEventPage from "@/pages/CreateEventPage";
+import EventDetailPage from "@/pages/EventDetailPage";
+import CreatePostPage from "@/pages/CreatePostPage";
+import NotificationsPage from "@/pages/NotificationsPage";
+import MessagingPage from "@/pages/MessagingPage";
+import SettingsPage from "@/pages/SettingsPage";
+import StravaPage from "@/pages/StravaPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <div className="max-w-lg mx-auto min-h-screen bg-background relative">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/calendar" element={<CalendarPage />} />
-            <Route path="/map" element={<MapPage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <BottomNav />
-        </div>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+// Pages where bottom nav should be hidden
+const hideNavPages = ['/login', '/create-event', '/create-post', '/messaging', '/settings', '/strava', '/history', '/notifications'];
+
+const AppContent = () => {
+  const location = useLocation();
+  const showNav = !hideNavPages.some(p => location.pathname.startsWith(p))
+    && !location.pathname.startsWith('/event/');
+
+  useEffect(() => {
+    if (Capacitor.isNativePlatform()) {
+      CapApp.addListener('backButton', ({ canGoBack }) => {
+        if (canGoBack) {
+          window.history.back();
+        } else {
+          CapApp.exitApp();
+        }
+      });
+    }
+  }, []);
+
+  return (
+    <div className="w-full min-h-screen bg-background relative safe-top">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/map" element={<MapPage />} />
+        <Route path="/community" element={<CommunityPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/create-event" element={<CreateEventPage />} />
+        <Route path="/event/:id" element={<EventDetailPage />} />
+        <Route path="/create-post" element={<CreatePostPage />} />
+        <Route path="/notifications" element={<NotificationsPage />} />
+        <Route path="/messaging" element={<MessagingPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/strava" element={<StravaPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {showNav && <BottomNav />}
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <Toaster />
+            <Sonner />
+            <HashRouter>
+              <AppContent />
+            </HashRouter>
+          </ThemeProvider>
+        </AuthProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
