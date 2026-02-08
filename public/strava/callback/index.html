@@ -8,6 +8,7 @@
   <p>Redirection en cours...</p>
   <script>
     // Capture OAuth params and redirect to the hash-based callback route
+    // HashRouter reads search params after the hash fragment
     var params = window.location.search;
     window.location.replace('/#/strava/callback' + params);
   </script>

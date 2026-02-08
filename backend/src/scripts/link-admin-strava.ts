@@ -6,9 +6,9 @@ dotenv.config();
 
 async function main() {
   const clientId = process.env.STRAVA_CLIENT_ID || '201108';
-  const clientSecret = process.env.STRAVA_CLIENT_SECRET || 'd888e477fd768c12ef1ecaae844ec4e2b47f3eab';
-  let accessToken = process.env.STRAVA_ACCESS_TOKEN || '745db6df1b47e6e291841a3bfe26d5211c88e11b';
-  let refreshToken = process.env.STRAVA_REFRESH_TOKEN || '1018ca3ac299fa1e5fa7a1ba3f2fb09d89737845';
+  const clientSecret = process.env.STRAVA_CLIENT_SECRET || '306d4e68a83f98e1a5ac0af70473e824ea796402';
+  let accessToken = process.env.STRAVA_ACCESS_TOKEN || 'baa2db7bbe78eabf0cb92ecb8f976c4ca7c04461';
+  let refreshToken = process.env.STRAVA_REFRESH_TOKEN || '09024f1088b537c3086de8a6f541bf7d49d4aa8a';
 
   const adminEmail = 'admin@rct.tn';
   const admin = dbHelper.getUserByEmail(adminEmail);

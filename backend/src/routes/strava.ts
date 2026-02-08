@@ -6,14 +6,14 @@ import { dbHelper } from '../db';
 const router = Router();
 
 const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID || '201108';
-const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET || 'd888e477fd768c12ef1ecaae844ec4e2b47f3eab';
-const STRAVA_REDIRECT_URI = process.env.STRAVA_REDIRECT_URI || 'http://localhost:8081/strava/callback';
+const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET || '306d4e68a83f98e1a5ac0af70473e824ea796402';
+const STRAVA_REDIRECT_URI = process.env.STRAVA_REDIRECT_URI || 'http://localhost:8080/strava/callback';
 
 // GET /api/strava/auth - Get Strava OAuth URL
 router.get('/auth', authenticateToken, (req: AuthRequest, res) => {
   try {
     const userId = req.user!.userId;
-    const authUrl = `https://www.strava.com/oauth/authorize?client_id=${STRAVA_CLIENT_ID}&redirect_uri=${encodeURIComponent(STRAVA_REDIRECT_URI)}&response_type=code&scope=read,activity:read_all&state=${userId}`;
+    const authUrl = `https://www.strava.com/oauth/authorize?client_id=${STRAVA_CLIENT_ID}&redirect_uri=${encodeURIComponent(STRAVA_REDIRECT_URI)}&response_type=code&scope=read,activity:read&state=${userId}&approval_prompt=force`;
 
     res.json({
       success: true,
@@ -129,19 +129,18 @@ router.get('/activities', authenticateToken, async (req: AuthRequest, res) => {
       return res.status(401).json({ success: false, error: 'Token Strava invalide. Veuillez reconnecter votre compte.' });
     }
 
-    // Fetch recent activities (last 30 days, running type)
-    const thirtyDaysAgo = Math.floor(Date.now() / 1000) - 30 * 24 * 60 * 60;
+    // Fetch recent activities (last 90 days)
+    const ninetyDaysAgo = Math.floor(Date.now() / 1000) - 90 * 24 * 60 * 60;
     const response = await axios.get('https://www.strava.com/api/v3/athlete/activities', {
       headers: { Authorization: `Bearer ${accessToken}` },
       params: {
-        after: thirtyDaysAgo,
+        after: ninetyDaysAgo,
         per_page: 30,
       },
     });
 
-    // Filter for running activities and map to our format
+    // Map all activities to our format
     const activities = response.data
-      .filter((a: any) => a.type === 'Run' || a.type === 'TrailRun' || a.type === 'VirtualRun')
       .map((a: any) => ({
         id: a.id,
         name: a.name,
