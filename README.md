@@ -310,9 +310,9 @@ Ce projet est développé pour le **Running Club de Tunis** dans le cadre de **#
 
 Pour toute question ou suggestion concernant le projet :
 
-- 📧 Email : contact@rct.tn
-- 🌐 Site web : [Running Club de Tunis](https://rct.tn)
-- 💬 Discord : [Rejoindre la communauté](https://discord.gg/rct)
+- 📧 Email : runningclubtunis@gmail.com
+- 🌐 Instagram : [Running Club de Tunis](https://instagram.com/running_club_tunis)
+- 💬 Facebook: [Rejoindre la communauté](https://www.facebook.com/rctunis/)
 
 ---
 
