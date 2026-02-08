@@ -23,11 +23,11 @@ Le **Running Club de Tunis (RCT)** est une association sportive tunisienne dédi
 
 ## 👥 Équipe de développement
 
-| Nom | Rôle | Contact |
-|-----|------|---------|
-| **Yosr Kharrat** | Lead Developer | [GitHub](https://github.com/yosrk) |
-| _[Ajouter membre]_ | _[Rôle]_ | _[Contact]_ |
-| _[Ajouter membre]_ | _[Rôle]_ | _[Contact]_ |
+| Nom | Contact |
+|-----|---------|
+| **Yosr Kharrat** | [GitHub](https://github.com/yosrk) |
+|**Raed Saidi**|  [GitHub](https://github.com/raed-saidi) |
+| **Aziz Bounhas** | [GitHub](https://github.com/BounhasAziz) |
 
 ---
 
